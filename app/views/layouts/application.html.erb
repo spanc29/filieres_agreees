@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <%= stylesheet_link_tag 'screen.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Cherry+Cream+Soda&v1', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'application.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'plugins/fancy-type/screen.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'plugins/buttons/screen.css', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'print.css', :media => 'print' %>
+    <%= javascript_include_tag "http://code.jquery.com/jquery-1.6.1.min.js","rails" %>
+    <%= csrf_meta_tag %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+    <div class="page container">
+          <div class="right">
+          <a href="http://www.spanc29.net">Un service de spanc29.net</a><br/>
+          <a href="http://www.assainissement-non-collectif.developpement-durable.gouv.fr/article.php3?id_article=185"> site officiel du ministère</a>
+          </div>
+        <h1>FILIERES AGREEES</h1>
+
+        <div id="nav">
+        <ul>
+          <li><%= link_to "COMPARATEUR", comparo_path, :class => "button", :title => "comparer 2 filières" %></li>
+          <li><%= link_to "AIDE", 'http://www.spanc29.net/wiki/wiki/AideAgreees', :class => "button", :title => "vers wikispanc" %><li>
+          <li><%= link_to "AVERTISSEMENT", 'http://www.spanc29.net/wiki/wiki/AideAgreees', :class => "button negative" %></li>
+          <li><% if can? :create, Filiere %>
+            <%= link_to "Nouvelle Filiere", new_filiere_path, :class => "button" %>
+          <%end%></li>
+        </ul>
+        </div>
+    </div>
+
+      <% flash.each do |name, msg| %>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <% end %>
+      <%= yield %>
+
+    <div class="footer center">
+    <% if current_user %>
+    <%= link_to "logout", logout_path %>
+    <% else %>
+    <%= link_to "login", login_path %>
+    <%end%>
+    </div>
+
+</body>
+</html>

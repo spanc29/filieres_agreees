@@ -1,0 +1,39 @@
+<% title "Filieres" %>
+
+<div class="container">
+<%= link_to "retour à la liste", filieres_path, :class => "button" %></div>
+
+<div class="container">
+<fieldset>
+  <legend>Comparaison technique</legend>
+<%= form_tag(:comparo, :method => "get") do %>
+  <%= label_tag(:id1, "Choisir : ") %>
+  <%= text_field_tag(:id1) %>
+  <%= text_field_tag(:id2) %>
+  <%= submit_tag("comparer") %>
+<% end %>
+</fieldset>
+
+
+<div class="span-12 border">
+  <% if @filier1%>
+     <h2>filiére 1</h2>
+     <h3><%= @filier1.num_agrement %></h3>
+     <%= @filier1.denomination_commerciale %>
+
+
+
+
+  <%else%>
+      <h2>VIDE</h2>
+  <%end%>
+</div>
+
+<div class="span-12 last">
+  <% if @filier2%>
+     <h2>filiére 2</h2>
+     <h3><%= @filier2.num_agrement %></h3>
+  <%else%>
+      <h2>VIDE</h2>
+  <%end%>
+</div>

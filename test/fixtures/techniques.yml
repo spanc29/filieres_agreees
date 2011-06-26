@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  hauteur: MyString
+  longueur: MyString
+  largeur: MyString
+  poids_vide: MyString
+  poids_equipe: MyString
+  materiaux: MyString
+  filiere_id: 1
+  commentaires: MyText
+
+two:
+  hauteur: MyString
+  longueur: MyString
+  largeur: MyString
+  poids_vide: MyString
+  poids_equipe: MyString
+  materiaux: MyString
+  filiere_id: 1
+  commentaires: MyText

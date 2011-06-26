@@ -1,0 +1,49 @@
+<%= simple_form_for @filiere do |f|%>
+  <div class="center"><%= f.input :actif %>
+  </div>
+  <%= f.input :num_agrement %><br/>
+  <%= f.input :denomination_commerciale %><br/>
+  <%= f.input :titulaire %><br/>
+  <%= f.input :adresse %><br/>
+  <%= f.input :site_web %><br/>
+  <%= f.input :email %><br/>
+  <%= f.input :organisme_test, :collection => ["CSTB","CERIB"] %><br/>
+  <%= f.input :num_avis_jo %><br/>
+  <%= f.input :date_JO, :as => :date %><br/>
+  <%= f.input :texte_NOR_jo %><br/>
+  <%= f.input :lien_legifrance %><br/>
+  <hr/>
+  <%= f.input :ref_guide_util %><br/>
+  <%= f.input :photo %><br/>
+  <%= f.input :type_filiere, :collection =>["culture libre","culture fixée","boues"] %><br/>
+  <%= f.input :description_sommaire %><br/>
+  <%= f.input :description %><br/>
+  <%= f.input :eq_hab_mini, :collection => 0..20 %><br/>
+  <%= f.input :eq_hab_max, :collection => 0..20 %><br/>
+  <div class="center">
+  <%= f.input :intermittence %>
+  <%= f.input :avec_nappe %>
+  <%= f.input :test_bacterio %></div>
+  <%= f.input :mes %><br/>
+  <%= f.input :dbo5 %><br/>
+  <%= f.input :dco %><br/>
+
+
+  <%= f.input :pourcent_vidange, :collection=> 10..80 %><br/>
+  <%= f.input :ouvrage_vidange %><br/>
+  <%= f.input :periode_vidange %><br/>
+  <%= f.input :conso_elect_an %><br/>
+  <%= f.input :cout_quinze_ans %><br/>
+<hr/>
+  <%= f.simple_fields_for :techniques do |tech| %>
+    <%= tech.input :materiaux %>
+    <%= tech.input :hauteur %>
+    <%= tech.input :longueur %>
+    <%= tech.input :largeur %>
+    <%= tech.input :poids_vide %>
+    <%= tech.input :poids_equipe %>
+
+  <%end%>
+
+  <%= f.submit%>
+<%end%>

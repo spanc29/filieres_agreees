@@ -1,0 +1,81 @@
+<% title @filiere.denomination_commerciale %>
+<div class="container">
+  <div class="clearfix">
+  <%= link_to "retour à la liste", filieres_path, :class => "button" %>
+    <% if can? :update, Filiere %><%= link_to "Modifier", edit_filiere_path(@filiere), :class=>"button" %> <%end%>
+    <% if can? :destroy, Filiere %><%= link_to "Detruire", @filiere, :confirm => 'Are you sure?', :method => :delete, :class => "button negative" %> <%end%>
+  </div>
+<h1>  <%= @filiere.num_agrement %> / <%= @filiere.denomination_commerciale %></h1>
+    <div class="span-8">
+      <p>Titulaire : <strong><%= @filiere.titulaire %></strong></p>
+      <p>Adresse : <address><%= simple_format(@filiere.adresse) %></address></p>
+      <p><strong><%= auto_link(@filiere.site_web) %></strong></p>
+      <p><strong><%= mail_to(@filiere.email) %></strong></p>
+    </div>
+    <div class="span-8">
+      <p>Organisme d'évaluation : <strong><%= @filiere.organisme_test %></strong></p>
+      <p>JORF n° : <strong><%= @filiere.num_avis_jo %></strong> du <%= l(@filiere.date_JO) %></p>
+      <p>lien legifrance : <strong><%= link_to @filiere.texte_NOR_jo, @filiere.lien_legifrance %></strong></p>
+      <p class="info">Eq Hab (Min-Max) :
+  <span class="large loud"> <strong><%= @filiere.eq_hab_mini %></strong></span> -
+  <span class="large loud"> <strong><%= @filiere.eq_hab_max %></strong></span></p>
+    </div>
+    <div class="span-8 last">
+      <%= image_tag(@filiere.photo, :width => '250', :alt => "photo filiere", :class =>"class") %>
+    </div>
+</div>
+</div>
+
+<div class="container">
+  <div class="spanc-24">
+  <h2>Description</h2>
+    <div class="notice"> type : <strong><%= @filiere.type_filiere %> --> <%= @filiere.description_sommaire %></strong></div>
+    Description :
+    <div class="small">
+    <code><%= simple_format(@filiere.description) %></code></div>
+  <p>
+    Ref Guide Util:
+    <strong><%= @filiere.ref_guide_util %></strong>
+  </p>
+</div>
+
+<div class="container">
+  <div class="span-12 border">
+  <h2>Conditions mise en oeuvre</h2>
+    <strong>Intermittence : </strong>
+    <%= img_boolean(@filiere.intermittence,'intermittence') %><br/>
+    <strong>Pose en nappe : </strong>
+    <%= img_boolean(@filiere.avec_nappe,'') %><br/>
+    <strong>Test Bacteriologie : </strong>
+    <%= img_boolean(@filiere.test_bacterio,'bacterio') %>
+  </div>
+
+
+<div class="span-12 last">
+
+<h2>Entretien</h2>
+
+<p>
+
+</p>
+<p>
+  <strong>Pourcent Vidange:</strong>
+  <%= @filiere.pourcent_vidange %>
+</p>
+<p>
+  <strong>Ouvrage Vidange:</strong>
+  <%= @filiere.ouvrage_vidange %>
+</p>
+<p>
+  <strong>Periode Vidange:</strong>
+  <%= @filiere.periode_vidange %>
+</p>
+<p>
+  <strong>Conso Elect An:</strong>
+  <%= @filiere.conso_elect_an %>
+</p>
+<p>
+  <strong>Cout Quinze Ans:</strong>
+  <%= @filiere.cout_quinze_ans %>
+</p></div></div>
+</div>
