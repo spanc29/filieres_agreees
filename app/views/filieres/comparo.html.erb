@@ -6,10 +6,10 @@
 <div class="container noprint">
 <fieldset>
   <legend>Comparaison technique</legend>
-<%= form_tag(:comparo) do %>
+<%= form_tag(:comparo, :method => "get") do %>
   <%= label_tag(:id1, "Choisir : ") %>
-  <%= select_tag (:id1, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement"),{ :include_blank => true }) %>
-  <%= select_tag (:id2, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement"),{ :include_blank => true }) %>
+  <%= text_field_tag (:id1) %>
+  <%= text_field_tag (:id2) %>
   <%= submit_tag("comparer") %>
 <% end %>
 </fieldset>
