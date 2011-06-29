@@ -3,5 +3,23 @@
 <div class="container noprint">
 <%= link_to "retour à la liste", filieres_path, :class => "button" %></div>
 
+<div class="container noprint">
+<fieldset>
+  <legend>Comparaison technique</legend>
+<%= form_tag(:comparo, :method => "get") do %>
+  <%= label_tag(:id1, "Choisir : ") %>
+  <%= select_tag (:id1, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement"),{ :include_blank => true }) %>
+  <%= select_tag (:id2, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement"),{ :include_blank => true }) %>
+  <%= submit_tag("comparer") %>
+<% end %>
+</fieldset>
 
+
+<div class="span-12 border">
+    <%= render 'list', :fil => @filier1 %>
+</div>
+
+<div class="span-12 last">
+    <%= render 'list', :fil => @filier2 %>
+</div>
 </div>
