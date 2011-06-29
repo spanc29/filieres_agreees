@@ -1,0 +1,28 @@
+<% if fil%>
+<h2><%= fil.num_agrement %></h2>
+<h3><%= fil.denomination_commerciale %></h3>
+<table>
+  <tbody>
+    <tr>
+      <td class="small">constructeur</td>
+      <td><%= fil.titulaire %></td>
+    </tr>
+    <tr>
+      <td class="small">nb eq.hab mini</td>
+      <td><%= fil.eq_hab_mini%></td>
+    </tr>
+    <tr>
+      <td class="small">nb eq.hab max</td>
+      <td><strong><%= fil.eq_hab_max%></strong></td>
+    </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+<%else%>
+  <h2>VIDE</h2>
+<%end%>

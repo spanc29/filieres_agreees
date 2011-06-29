@@ -6,6 +6,7 @@ class FilieresController < ApplicationController
   end
 
   def comparo
+    @filieres = Filiere.all
     @filier1 = Filiere.find_by_num_agrement(params[:id1])
     @filier2 = Filiere.find_by_num_agrement(params[:id2])
   end
@@ -16,6 +17,7 @@ class FilieresController < ApplicationController
 
   def new
     @filiere = Filiere.new
+            @filiere.techniques.build
   end
 
   def create

@@ -32,18 +32,15 @@
   <%= f.input :pourcent_vidange, :collection=> 10..80 %><br/>
   <%= f.input :ouvrage_vidange %><br/>
   <%= f.input :periode_vidange %><br/>
-  <%= f.input :conso_elect_an %><br/>
+  <%= f.input :conso_elect_an %>
   <%= f.input :cout_quinze_ans %><br/>
 <hr/>
-  <%= f.simple_fields_for :techniques do |tech| %>
-    <%= tech.input :materiaux %>
-    <%= tech.input :hauteur %>
-    <%= tech.input :longueur %>
-    <%= tech.input :largeur %>
-    <%= tech.input :poids_vide %>
-    <%= tech.input :poids_equipe %>
-
-  <%end%>
-
+  <div>
+  <%= f.simple_fields_for :techniques do |builder| %>
+    <%= render "techniques/form", :f => builder %>
+  <% end %>
+  <div class="center clearfix">
+  <%= link_to_add_fields('Ajouter un élement', f, :techniques) %></div>
+  </div>
   <%= f.submit%>
 <%end%>

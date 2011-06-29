@@ -8,8 +8,8 @@
 <h1>  <%= @filiere.num_agrement %> / <%= @filiere.denomination_commerciale %></h1>
     <div class="span-8">
       <p>Titulaire : <strong><%= @filiere.titulaire %></strong></p>
-      <p>Adresse : <address><%= simple_format(@filiere.adresse) %></address></p>
-      <p><strong><%= auto_link(@filiere.site_web) %></strong></p>
+      Adresse : <address><%= simple_format(@filiere.adresse) %></address>
+      <p> <%= sanitize(auto_link(@filiere.site_web)) %> </p>
       <p><strong><%= mail_to(@filiere.email) %></strong></p>
     </div>
     <div class="span-8">

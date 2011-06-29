@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110626192204) do
+ActiveRecord::Schema.define(:version => 20110628204323) do
 
   create_table "filieres", :force => true do |t|
     t.string   "num_agrement"
@@ -53,11 +53,14 @@ ActiveRecord::Schema.define(:version => 20110626192204) do
     t.string   "largeur"
     t.string   "poids_vide"
     t.string   "poids_equipe"
+    t.string   "volume_utile"
     t.string   "materiaux"
     t.integer  "filiere_id"
     t.text     "commentaires"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nom_cuve"
+    t.decimal  "diff_ent_sort"
   end
 
   create_table "users", :force => true do |t|
