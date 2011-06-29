@@ -77,7 +77,7 @@
 <div class="container">
   <div class="span-24">
   <h2>caractéristiques</h2>
-  <%= @filiere.techniques.each do |tec|%>
+  <% @filiere.techniques.each do |tec|%>
       eléments : <%= tec.nom_cuve %> (<%= tec.materiaux %>)<br/>
       Long.x larg.x haut. : <%= tec.longueur %> x <%= tec.largeur %> x <%= tec.hauteur %><br/>
       poids : <%= tec.poids_vide %><br/>
