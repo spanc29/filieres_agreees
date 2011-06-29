@@ -52,12 +52,7 @@
 
 
 <div class="span-12 last">
-
 <h2>Entretien</h2>
-
-<p>
-
-</p>
 <p>
   <strong>Pourcent Vidange:</strong>
   <%= @filiere.pourcent_vidange %>
@@ -78,4 +73,15 @@
   <strong>Cout Quinze Ans:</strong>
   <%= @filiere.cout_quinze_ans %>
 </p></div></div>
+
+<div class="container">
+  <div class="span-24">
+  <h2>caractéristiques</h2>
+  <%= @filiere.techniques.each do |tec|%>
+      eléments : <%= tec.nom_cuve %> (<%= tec.materiaux %>)<br/>
+      Long.x larg.x haut. : <%= tec.longueur %> x <%= tec.largeur %> x <%= tec.hauteur %><br/>
+      poids : <%= tec.poids_vide %><br/>
+      obs. : <%= tec.commentaires %><br/>
+  <%end %></div>
+</div>
 </div>
