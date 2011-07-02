@@ -27,7 +27,7 @@ def aide(ancre=nil)
   if ancre
     lien = lien + "#" + ancre
   end
-    link_to (image_tag("help.png", :alt =>'aide', :title =>"voir l'aide"), lien , :target => "_blank")
+    link_to (image_tag("help.png", :alt =>"aide", :title =>"voir l'aide"), {lien}, :target => "_blank")
 end
 
 end
