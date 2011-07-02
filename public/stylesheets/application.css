@@ -21,14 +21,23 @@ font-family: 'Cherry Cream Soda', arial, serif;
   border-bottom:1px dotted #0A4369;
   color:#0A4369;
   font-size:180%;
-  letter-spacing:-2px;
   line-height:0.9em;
   padding:15px 10px 0px;
   text-transform:lowercase;
   word-spacing:1px;
   }
 
+h3 {
+font-family: 'Cherry Cream Soda', arial, serif;
+  border-bottom:1px dotted #0A4369;
+  color:#0A4369;
+  font-size:1em;
+  padding:15px 10px 0px;
+  word-spacing:1px;
+  }
+
 .ptt {font-size:0.8em;}
+.tptt {font-size:0.6em;}
 .grd {font-size:1.5em;}
 
 .page {
@@ -86,9 +95,13 @@ font-family: 'Cherry Cream Soda', arial, serif;
   margin: 0;
 }
 
+.simple_form input.string {
+width: 300px;
+}
+
 .simple_form label.string, label.select, label.text, label.email, label.date, label.integer {
   float: left;
-  width: 300px;
+  width: 250px;
   text-align: right;
   margin: 0.5em 0.5em 0 0;
 }

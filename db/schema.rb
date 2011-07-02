@@ -10,7 +10,43 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110628204323) do
+ActiveRecord::Schema.define(:version => 20110701215118) do
+
+  create_table "conditionposes", :force => true do |t|
+    t.text     "generalite"
+    t.text     "ter_normal"
+    t.text     "ter_diff"
+    t.text     "evacuation"
+    t.text     "implantation"
+    t.text     "ventil"
+    t.boolean  "sous_voirie"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "filiere_id"
+  end
+
+  create_table "couts", :force => true do |t|
+    t.decimal  "cannuel",       :precision => 5, :scale => 2
+    t.decimal  "cquinzans",     :precision => 6, :scale => 2
+    t.decimal  "ccontratmaint", :precision => 5, :scale => 2
+    t.decimal  "c_elect_watt",  :precision => 4, :scale => 2
+    t.decimal  "c_elect_an",    :precision => 4, :scale => 2
+    t.text     "c_obs"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "filiere_id"
+  end
+
+  create_table "entretiens", :force => true do |t|
+    t.string   "eouvrage"
+    t.string   "eoperation"
+    t.string   "efrequence"
+    t.string   "erealisation"
+    t.text     "eobservat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "filiere_id"
+  end
 
   create_table "filieres", :force => true do |t|
     t.string   "num_agrement"
@@ -36,24 +72,24 @@ ActiveRecord::Schema.define(:version => 20110628204323) do
     t.integer  "pourcent_vidange"
     t.string   "ouvrage_vidange"
     t.string   "periode_vidange"
-    t.integer  "conso_elect_an"
-    t.integer  "cout_quinze_ans"
-    t.boolean  "actif"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
     t.string   "mes"
     t.string   "dbo5"
     t.string   "dco"
+    t.integer  "PCdoc"
+    t.integer  "PCdbo"
+    t.integer  "PCmes"
+    t.integer  "logbacter"
+    t.boolean  "sortie_basse"
+    t.boolean  "elec"
+    t.string   "guide_pose"
   end
 
   create_table "techniques", :force => true do |t|
-    t.string   "hauteur"
-    t.string   "longueur"
-    t.string   "largeur"
     t.string   "poids_vide"
     t.string   "poids_equipe"
-    t.string   "volume_utile"
     t.string   "materiaux"
     t.integer  "filiere_id"
     t.text     "commentaires"
@@ -61,6 +97,10 @@ ActiveRecord::Schema.define(:version => 20110628204323) do
     t.datetime "updated_at"
     t.string   "nom_cuve"
     t.decimal  "diff_ent_sort"
+    t.string   "type_cuve"
+    t.float    "longueur"
+    t.float    "largeur"
+    t.float    "hauteur"
   end
 
   create_table "users", :force => true do |t|

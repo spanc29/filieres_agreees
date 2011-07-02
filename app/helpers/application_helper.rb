@@ -22,4 +22,12 @@ module ApplicationHelper
       end
   end
 
+def aide(ancre=nil)
+  lien="http://www.spanc29.net/wiki/wiki/AideAgreees"
+  if ancre
+    lien = lien + "#" + ancre
+  end
+    link_to (image_tag("help.png", :alt =>'aide', :title =>"voir l'aide"), lien , :target => "_blank")
+end
+
 end

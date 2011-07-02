@@ -5,6 +5,8 @@
     <% if can? :update, Filiere %><%= link_to "Modifier", edit_filiere_path(@filiere), :class=>"button" %> <%end%>
     <% if can? :destroy, Filiere %><%= link_to "Detruire", @filiere, :confirm => 'Are you sure?', :method => :delete, :class => "button negative" %> <%end%>
   </div>
+
+<!-- titre -->
 <h1>  <%= @filiere.num_agrement %> / <%= @filiere.denomination_commerciale %></h1>
     <div class="span-8">
       <p>Titulaire : <strong><%= @filiere.titulaire %></strong></p>
@@ -16,7 +18,7 @@
       <p>Organisme d'évaluation : <strong><%= @filiere.organisme_test %></strong></p>
       <p>JORF n° : <strong><%= @filiere.num_avis_jo %></strong> du <%= l(@filiere.date_JO) %></p>
       <p>lien legifrance : <strong><%= link_to @filiere.texte_NOR_jo, @filiere.lien_legifrance %></strong></p>
-      <p class="info">Eq Hab (Min-Max) :
+      <p class="notice">Eq Hab (Min-Max) :
   <span class="large loud"> <strong><%= @filiere.eq_hab_mini %></strong></span> -
   <span class="large loud"> <strong><%= @filiere.eq_hab_max %></strong></span></p>
     </div>
@@ -26,62 +28,120 @@
 </div>
 </div>
 
+<!-- description / caracteristique techniques -->
 <div class="container">
-  <div class="spanc-24">
-  <h2>Description</h2>
-    <div class="notice"> type : <strong><%= @filiere.type_filiere %> --> <%= @filiere.description_sommaire %></strong></div>
+  <div class="span-24">
+  <h2>Description <%= aide()%></h2>
+    <div class="info"> type : <strong><%= @filiere.type_filiere %> --> <%= @filiere.description_sommaire %></strong></div>
     Description :
-    <div class="small">
-    <code><%= simple_format(@filiere.description) %></code></div>
-  <p>
-    Ref Guide Util:
-    <strong><%= @filiere.ref_guide_util %></strong>
-  </p>
+    <div class="small"><code><%= simple_format(@filiere.description) %></code></div>
+  </div>
 </div>
+<!-- fin cadre 1 -->
 
+<!-- agréement / technic -->
 <div class="container">
   <div class="span-12 border">
-  <h2>Conditions mise en oeuvre</h2>
-    <strong>Intermittence : </strong>
-    <%= img_boolean(@filiere.intermittence,'intermittence') %><br/>
-    <strong>Pose en nappe : </strong>
-    <%= img_boolean(@filiere.avec_nappe,'') %><br/>
-    <strong>Test Bacteriologie : </strong>
-    <%= img_boolean(@filiere.test_bacterio,'bacterio') %>
+  <h2>Conditions Agrément <%= aide()%></h2>
+    <%= img_boolean(@filiere.intermittence,'intermittence') %> : <strong>Intermittence</strong><br/>
+    <%= img_boolean(@filiere.avec_nappe,'') %> : <strong>Pose en nappe</strong><br/>
+    <%= img_boolean(@filiere.test_bacterio,'bacterio') %> : <strong>Test Bacteriologie</strong><br/>
+    <hr/>Vidange : <strong><%= @filiere.ouvrage_vidange %></strong> à
+    <strong><%= @filiere.pourcent_vidange %> %</strong><br/>
+    <hr/>guide technique référence : <strong><%= @filiere.ref_guide_util %></strong>
   </div>
+  <div class="span-12 last">
+  <h2>caractéristiques</h2>
+  <h3>techniques</h3>
+    <% @filiere.techniques.each do |tec|%>
+      ------------------------------<br/>
+      élèments : <strong> <%= tec.nom_cuve %> <%= tec.type_cuve %> (<%= tec.materiaux %>)</strong><br/>
+      dim . : <strong><%= tec.longueur %> x <%= tec.largeur %> x <%= tec.hauteur %></strong>(Long.x larg.x haut. en m)<br/>
+      poids (à vide / équipé) : <strong><%= tec.poids_vide %></strong>/<strong><%= tec.poids_equipe %></strong><br/>
+      obs. : <%= tec.commentaires %><br/>
+  <%end %>
+  <h3>performances moyennes annoncées </h3>
+    DCO : <%= @filiere.dco %> mg/L (<%= @filiere.PCdoc %> %)<br/>
+    DBO<sub>5</sub> : <%= @filiere.dbo5 %> mg/L (<%= @filiere.PCdbo %>%)<br/>
+    MES : <%= @filiere.mes %> mg.L (<%= @filiere.PCmes %>%)<br/>
+  </div>
+</div>
 
+<!-- condition pose -->
+<div class="container">
+<h2>conditions de pose <%= aide()%></h2>
+<div class="info">
+d'après : <strong><%= @filiere.ref_guide_util %></strong> (<%= link_to 'charger', @filiere.lien_legifrance, :target => "_blank" %>)</div>
 
-<div class="span-12 last">
-<h2>Entretien</h2>
-<p>
-  <strong>Pourcent Vidange:</strong>
-  <%= @filiere.pourcent_vidange %>
-</p>
-<p>
-  <strong>Ouvrage Vidange:</strong>
-  <%= @filiere.ouvrage_vidange %>
-</p>
-<p>
-  <strong>Periode Vidange:</strong>
-  <%= @filiere.periode_vidange %>
-</p>
-<p>
-  <strong>Conso Elect An:</strong>
-  <%= @filiere.conso_elect_an %>
-</p>
-<p>
-  <strong>Cout Quinze Ans:</strong>
-  <%= @filiere.cout_quinze_ans %>
-</p></div></div>
+<div class="span-8 box">
+  <h3>Généralités</h3>
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut la  <br/>
+</div>
+<div class="span-8 box">
+  <h3>Implantation</h3>
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna <br/>
+</div>
+<div class="span-8 box last">
+  <h3>Ventilations</h3>
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna <br/>
+</div>
+<hr/>
+<div class="span-8 box">
+  <h3>terrain normal</h3>
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata s
+</div>
+<div class="span-8 box">
+  <h3>terrain difficile</h3>
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata s
+</div>
+<div class="span-8 box last">
+  <h3>évacuation/dispersion</h3>
+  Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumyeirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diamvoluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata s
+</div>
+</div>
 
 <div class="container">
   <div class="span-24">
-  <h2>caractéristiques</h2>
-  <% @filiere.techniques.each do |tec|%>
-      eléments : <%= tec.nom_cuve %> (<%= tec.materiaux %>)<br/>
-      Long.x larg.x haut. : <%= tec.longueur %> x <%= tec.largeur %> x <%= tec.hauteur %><br/>
-      poids : <%= tec.poids_vide %><br/>
-      obs. : <%= tec.commentaires %><br/>
-  <%end %></div>
+    <h2>Entretien <%= aide('entretien')%></h2>
+    <table>
+      <tbody>
+        <thead>
+        <tr>
+        <th>fréquence</th>
+        <th>élément</th>
+        <th>opération</th>
+        <th>réalisation</th>
+        <th>observations</th>
+        </tr>
+        </thead>
+        <%= @filiere.entretiens.each do |ent|%>
+        <tr>
+          <td><%= ent.efrequence %></td>
+          <td><%= ent.eouvrage %></td>
+          <td><%= ent.eoperation %></td>
+          <td><%= ent.erealisation %></td>
+          <td><%= ent.eobservat %></td>
+        </tr>
+        <%end %>
+      </tbody>
+    </table>
+  </div>
 </div>
+
+<!-- couts -->
+<div class="container">
+  <h2>Coûts / tarifs <%= aide('tarifs')%></h2>
+  <div class="span-8 border">
+    <h3>Généralités</h3>
+    qsdfqsdfsq <br/>
+    dfsdfgsdfg
+  </div>
+  <div class="span-8 border">
+    <h3>Coûts annuels moyens</h3>
+    sdfqsdfqsd
+  </div>
+  <div class="span-8 last">
+    <h3>Coûts sur 15 ans</h3>
+    sqfdqsdf
+  </div>
 </div>

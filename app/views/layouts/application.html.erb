@@ -36,13 +36,19 @@
       <% end %>
       <%= yield %>
 
-    <div class="footer center">
+    <footer>
+    <div class="footer box center">
+    <div class="small quiet">
+      Veuillez lire l'avertissement - Les marques et logo appartiennent à leur propriétaire respectif. photo et visuel non contractuel. <br/>
+      Tarifs et informations sont donnés à titre indicatif non contractuel, sous toutes réserves de modifications. Seules les données officielles ou des constructeurs font foi.
+    </div>
+
     <% if current_user %>
     <%= link_to "logout", logout_path %>
     <% else %>
     <%= link_to "login", login_path %>
     <%end%>
     </div>
-
+    </footer>
 </body>
 </html>

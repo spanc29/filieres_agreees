@@ -1,6 +1,6 @@
+<div class="container">
 <%= simple_form_for @filiere do |f|%>
-  <div class="center"><%= f.input :actif %>
-  </div>
+  <h3>Généralités</h3>
   <%= f.input :num_agrement %><br/>
   <%= f.input :denomination_commerciale %><br/>
   <%= f.input :titulaire %><br/>
@@ -12,35 +12,56 @@
   <%= f.input :date_JO, :as => :date %><br/>
   <%= f.input :texte_NOR_jo %><br/>
   <%= f.input :lien_legifrance %><br/>
-  <hr/>
-  <%= f.input :ref_guide_util %><br/>
   <%= f.input :photo %><br/>
+
+  <h3>descriptions</h3>
   <%= f.input :type_filiere, :collection =>["culture libre","culture fixée","boues"] %><br/>
+  <div class="center"> <%= f.input :elec %></div>
   <%= f.input :description_sommaire %><br/>
   <%= f.input :description %><br/>
+
+  <h3>conditions agrément</h3>
   <%= f.input :eq_hab_mini, :collection => 0..20 %><br/>
   <%= f.input :eq_hab_max, :collection => 0..20 %><br/>
-  <div class="center">
-  <%= f.input :intermittence %>
+  <div class="center"><%= f.input :intermittence %>
   <%= f.input :avec_nappe %>
   <%= f.input :test_bacterio %></div>
-  <%= f.input :mes %><br/>
-  <%= f.input :dbo5 %><br/>
-  <%= f.input :dco %><br/>
+  <%= f.input :ref_guide_util %><br/>
 
+  <h3>performances</h3>
+  <div class=""><%= f.input :mes, :class =>"" %> mg/L / <%= f.input :PCmes, :label => false %> %</div>
+  <div class=""><%= f.input :dbo5 %> mg/L / <%= f.input :PCdbo, :label => false %> %</div>
+  <div class=""><%= f.input :dco %> mg/L / <%= f.input :PCdoc, :label => false %> %</div>
 
   <%= f.input :pourcent_vidange, :collection=> 10..80 %><br/>
   <%= f.input :ouvrage_vidange %><br/>
   <%= f.input :periode_vidange %><br/>
-  <%= f.input :conso_elect_an %>
-  <%= f.input :cout_quinze_ans %><br/>
-<hr/>
+
+  <h3>techniques</h3>
+  <%= f.input :sortie_basse %>
   <div>
   <%= f.simple_fields_for :techniques do |builder| %>
     <%= render "techniques/form", :f => builder %>
   <% end %>
   <div class="center clearfix">
-  <%= link_to_add_fields('Ajouter un élement', f, :techniques) %></div>
+  <%= link_to_add_fields('Ajouter un élèment', f, :techniques) %></div>
   </div>
+
+  <h3>conditions de pose</h3>
+  <%= f.input :guide_pose %>
+  <div>
+  <%= f.simple_fields_for :conditionpose do |cp| %>
+      <div class="center"> <%= cp.input :sous_voirie %></div>
+      <%= cp.input :generalite %><br/>
+      <%= cp.input :implantation %><br/>
+      <%= cp.input :ventil %><br/>
+      <%= cp.input :ter_normal %><br/>
+      <%= cp.input :ter_diff %><br/>
+      <%= cp.input :evacuation %><br/>
+  <% end %>
+  </div>
+
+
   <%= f.submit%>
-<%end%>
+  <%end%>
+</div>

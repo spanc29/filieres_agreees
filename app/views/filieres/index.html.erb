@@ -6,10 +6,12 @@
   <legend>Recherche rapide</legend>
 <%= form_for @search do |f|%>
   N° agr.ou marque<%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_contains, :size => "10" %>
-  Eq.hab <%= f.number_field :eq_hab_max_gte, :size => "3" %>
-  interm : <%= f.check_box :intermittence_is_true %>
-
-  <%= f.submit "chercher"%>
+  Eq.hab min <%= f.number_field :eq_hab_max_gte, :size => "3" %>
+  Eq.hab max <%= f.number_field :eq_hab_max_lte, :size => "3" %>
+  Interm : <%= f.check_box :intermittence_is_true %>
+  Nappe : <%= f.check_box :avec_nappe_is_true %>
+  Bacterio : <%= f.check_box :test_bacterio_is_true %>
+  <%= f.submit "chercher"%> / <span class="ptt"> <%= link_to 'RAZ', root_path %></span>
 <%end%>
 </fieldset>
 </div>
@@ -46,7 +48,7 @@
   <div class="span-6 border">
     <div class="info ">de : <span class="grd loud"><%= filiere.eq_hab_mini %></span> à <span class="grd loud"><%= filiere.eq_hab_max %></span> eq.hab</div>
     <%= filiere.type_filiere %><br/>
-    <div class="small"><%= filiere.description_sommaire %></div>
+    <div class="small"><%= truncate(filiere.description_sommaire, :length => 100) %></div>
 
   </div>
   <div class="span-6 border">
@@ -54,16 +56,21 @@
       <%= img_boolean(filiere.intermittence,'intermittence') %> intermittence <br/>
       <%= img_boolean(filiere.avec_nappe,'pose en nappe') %> nappe autorisée<br/>
       <%= img_boolean(filiere.test_bacterio,'test bacterio') %> Bactério testée<br/>
-      <% if filiere.conso_elect_an %>
+      <% if filiere.elec == true %>
         <%=image_tag("lightning.png") %>
       <%end%> Electricité<br/>
-      <% if filiere.test_bacterio == true %>
+      <% if filiere.sortie_basse == true %>
         <%=image_tag("arrow-315.png") %>
-      <%end%> Sortie<br/></div>
-      Guide <%= filiere.ref_guide_util %><br/>
+      <%end%> Sortie<br/>
+      vidange : <%= filiere.ouvrage_vidange %> à <%= filiere.pourcent_vidange %> % <br/>
+      <%= filiere.ref_guide_util %></div>
   </div>
+
   <div class="span-6 last">
       <%= image_tag(filiere.photo, :size => "100x100", :alt => "photo", :class =>"class") %>
+      <div class="tptt quiet">
+        MàJ <%= l(filiere.updated_at) %>
+      </div>
   </div>
   </div>
 <%end %>
