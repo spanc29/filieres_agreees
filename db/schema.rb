@@ -10,31 +10,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110701215118) do
-
-  create_table "conditionposes", :force => true do |t|
-    t.text     "generalite"
-    t.text     "ter_normal"
-    t.text     "ter_diff"
-    t.text     "evacuation"
-    t.text     "implantation"
-    t.text     "ventil"
-    t.boolean  "sous_voirie"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "filiere_id"
-  end
+ActiveRecord::Schema.define(:version => 20110703193017) do
 
   create_table "couts", :force => true do |t|
-    t.decimal  "cannuel",       :precision => 5, :scale => 2
-    t.decimal  "cquinzans",     :precision => 6, :scale => 2
-    t.decimal  "ccontratmaint", :precision => 5, :scale => 2
-    t.decimal  "c_elect_watt",  :precision => 4, :scale => 2
-    t.decimal  "c_elect_an",    :precision => 4, :scale => 2
-    t.text     "c_obs"
+    t.string   "poste"
+    t.string   "duree"
+    t.float    "cout_min"
+    t.float    "cout_max"
+    t.text     "obs"
+    t.integer  "filiere_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "filiere_id"
   end
 
   create_table "entretiens", :force => true do |t|
@@ -46,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20110701215118) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "filiere_id"
+    t.integer  "ecout_min"
+    t.integer  "ecout_max"
   end
 
   create_table "filieres", :force => true do |t|
@@ -85,6 +73,22 @@ ActiveRecord::Schema.define(:version => 20110701215118) do
     t.boolean  "sortie_basse"
     t.boolean  "elec"
     t.string   "guide_pose"
+    t.integer  "conso_elect"
+    t.integer  "cout_annuel"
+    t.integer  "cout_15ans"
+  end
+
+  create_table "poses", :force => true do |t|
+    t.text     "generalite"
+    t.text     "ter_normal"
+    t.text     "ter_diff"
+    t.text     "evacuation"
+    t.text     "implantation"
+    t.text     "ventil"
+    t.boolean  "sous_voirie"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "filiere_id"
   end
 
   create_table "techniques", :force => true do |t|
@@ -101,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20110701215118) do
     t.float    "longueur"
     t.float    "largeur"
     t.float    "hauteur"
+    t.integer  "puiss_elect_total"
   end
 
   create_table "users", :force => true do |t|

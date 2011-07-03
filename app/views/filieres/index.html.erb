@@ -6,7 +6,7 @@
   <legend>Recherche rapide</legend>
 <%= form_for @search do |f|%>
   N° agr.ou marque<%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_contains, :size => "10" %>
-  Eq.hab min <%= f.number_field :eq_hab_max_gte, :size => "3" %>
+  Eq.hab min <%= f.number_field :eq_hab_mini_gte, :size => "3" %>
   Eq.hab max <%= f.number_field :eq_hab_max_lte, :size => "3" %>
   Interm : <%= f.check_box :intermittence_is_true %>
   Nappe : <%= f.check_box :avec_nappe_is_true %>
@@ -48,20 +48,18 @@
   <div class="span-6 border">
     <div class="info ">de : <span class="grd loud"><%= filiere.eq_hab_mini %></span> à <span class="grd loud"><%= filiere.eq_hab_max %></span> eq.hab</div>
     <%= filiere.type_filiere %><br/>
-    <div class="small"><%= truncate(filiere.description_sommaire, :length => 100) %></div>
+    <div class="small"><%= truncate(filiere.description_sommaire, :length => 120) %></div>
 
   </div>
   <div class="span-6 border">
       <div class="ptt">
       <%= img_boolean(filiere.intermittence,'intermittence') %> intermittence <br/>
-      <%= img_boolean(filiere.avec_nappe,'pose en nappe') %> nappe autorisée<br/>
+      <%= img_boolean(filiere.avec_nappe,'pose en nappe') %> pose en nappe<br/>
       <%= img_boolean(filiere.test_bacterio,'test bacterio') %> Bactério testée<br/>
       <% if filiere.elec == true %>
-        <%=image_tag("lightning.png") %>
-      <%end%> Electricité<br/>
+        <%=image_tag("lightning.png") %> Conso. Electricité <%end%><br/>
       <% if filiere.sortie_basse == true %>
-        <%=image_tag("arrow-315.png") %>
-      <%end%> Sortie<br/>
+        <%=image_tag("arrow-270.png") %> sortie basse <%end%><br/>
       vidange : <%= filiere.ouvrage_vidange %> à <%= filiere.pourcent_vidange %> % <br/>
       <%= filiere.ref_guide_util %></div>
   </div>

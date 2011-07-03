@@ -3,12 +3,14 @@
 <%= f.input :nom_cuve %><br/>
 <%= f.input :type_cuve %><br/>
 <%= f.input :materiaux %><br/>
-<%= f.input :hauteur %>m <br/>
-<%= f.input :longueur %>m <br/>
-<%= f.input :largeur %>m <br/>
+<div class="decal">
+haut. <%= f.input :hauteur, :label => false  %>m
+long. <%= f.input :longueur, :label => false  %>m
+larg. <%= f.input :largeur, :label => false  %>m</div>
 <%= f.input :diff_ent_sort, :label => "diff entrée-sortie" %> cm<br/>
 <%= f.input :poids_vide %> kg<br/>
 <%= f.input :poids_equipe, :label =>"Poids équipé" %> kg<br/>
+<%= f.input :puiss_elect_total %><br/>
 <%= f.input :commentaires %>
 
 </div>

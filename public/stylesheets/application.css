@@ -47,6 +47,9 @@ font-family: 'Cherry Cream Soda', arial, serif;
   padding: 20px 40px;
   margin-top: 20px;
 }
+.decal{
+  margin-left: 250px}
+
 .outline {padding:1em;margin-bottom:0.5em;border: 1px solid #ddd;-moz-border-radius: 1em;-webkit-border-radius: 1em;border-radius: 1em;}
 
 #flash_notice, #flash_error, #flash_alert {

@@ -4,6 +4,8 @@ class Filiere < ActiveRecord::Base
   accepts_nested_attributes_for :techniques, :allow_destroy => true
   has_many :entretiens
   accepts_nested_attributes_for :entretiens, :allow_destroy => true
-  has_one :conditionpose
-  has_one :cout
+  has_many :poses
+  accepts_nested_attributes_for :poses, :allow_destroy => true
+  has_many :couts
+  accepts_nested_attributes_for :couts, :allow_destroy => true
 end

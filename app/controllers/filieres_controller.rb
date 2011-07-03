@@ -18,6 +18,9 @@ class FilieresController < ApplicationController
   def new
     @filiere = Filiere.new
             @filiere.techniques.build
+            @filiere.entretiens.build
+            @filiere.poses.build
+            @filiere.couts.build
   end
 
   def create

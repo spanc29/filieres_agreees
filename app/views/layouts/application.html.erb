@@ -22,8 +22,8 @@
         <div id="nav">
         <ul>
           <li><%= link_to "COMPARATEUR", comparo_path, :class => "button", :title => "comparer 2 filières" %></li>
-          <li><%= link_to "AIDE", 'http://www.spanc29.net/wiki/wiki/AideAgreees', :class => "button", :title => "vers wikispanc" %><li>
-          <li><%= link_to "AVERTISSEMENT", 'http://www.spanc29.net/wiki/wiki/AideAgreees', :class => "button negative" %></li>
+          <li><%= link_to "AIDE", '/aide.html', :class => "button", :title => "AIDE" %><li>
+          <li><%= link_to "AVERTISSEMENT", "/disclaimer.html", :class => "button negative" %></li>
           <li><% if can? :create, Filiere %>
             <%= link_to "Nouvelle Filiere", new_filiere_path, :class => "button" %>
           <%end%></li>

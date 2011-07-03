@@ -1,0 +1,8 @@
+<div class="fields outline">
+<%= f.input :poste, :collection => ["installation","maintenance","évacuation boues","frais fonctionnement","analyses","assurance","petit entretien","renouvellement support","voir observations"], :as => :select %><br/>
+<div class="center">
+<%= f.input :duree, :collection => ["1 an", "15 ans", "ponctuel"], :as => :radio %><br/>
+<%= f.input :cout_min %><br/>
+<%= f.input :cout_max %></div><br/>
+<%= f.input :obs, :label => "observations", :as => :string %><br/>
+</div>

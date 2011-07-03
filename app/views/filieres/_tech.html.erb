@@ -1,0 +1,11 @@
+élèments : <strong> <%= tec.nom_cuve %> - <%= tec.type_cuve %> (<%= tec.materiaux %>)</strong><br/>
+dim. (Long.x larg.x haut.) en m : <strong><%= tec.longueur %> x <%= tec.largeur %> x <%= tec.hauteur %></strong><br/>
+poids (à vide / équipé)  : <strong><%= tec.poids_vide %> kg </strong>  /<strong><%= tec.poids_equipe %> kg</strong><br/>
+diff. entrée-sortie : <strong><%= tec.diff_ent_sort %> cm : </strong>
+      <% if @filiere.sortie_basse == true %>
+        <%=image_tag("arrow-270.png") %> sortie basse<br/>
+      <% else %>
+        <%=image_tag("arrow-090.png") %> sortie haute<br/>
+      <%end%>
+Puissance électrique totale installée : <strong><%= tec.puiss_elect_total %> W </strong><br/>
+obs. : <div class="small"><%= simple_format(tec.commentaires) %></div><br/>

@@ -16,7 +16,6 @@
 
   <h3>descriptions</h3>
   <%= f.input :type_filiere, :collection =>["culture libre","culture fixée","boues"] %><br/>
-  <div class="center"> <%= f.input :elec %></div>
   <%= f.input :description_sommaire %><br/>
   <%= f.input :description %><br/>
 
@@ -25,7 +24,9 @@
   <%= f.input :eq_hab_max, :collection => 0..20 %><br/>
   <div class="center"><%= f.input :intermittence %>
   <%= f.input :avec_nappe %>
-  <%= f.input :test_bacterio %></div>
+  <%= f.input :test_bacterio %>
+  <%= f.input :elec %>
+  <%= f.input :sortie_basse %></div>
   <%= f.input :ref_guide_util %><br/>
 
   <h3>performances</h3>
@@ -38,7 +39,7 @@
   <%= f.input :periode_vidange %><br/>
 
   <h3>techniques</h3>
-  <%= f.input :sortie_basse %>
+   conso elect annuelle <%= f.input :conso_elect, :label => false %>
   <div>
   <%= f.simple_fields_for :techniques do |builder| %>
     <%= render "techniques/form", :f => builder %>
@@ -48,20 +49,30 @@
   </div>
 
   <h3>conditions de pose</h3>
-  <%= f.input :guide_pose %>
-  <div>
-  <%= f.simple_fields_for :conditionpose do |cp| %>
-      <div class="center"> <%= cp.input :sous_voirie %></div>
-      <%= cp.input :generalite %><br/>
-      <%= cp.input :implantation %><br/>
-      <%= cp.input :ventil %><br/>
-      <%= cp.input :ter_normal %><br/>
-      <%= cp.input :ter_diff %><br/>
-      <%= cp.input :evacuation %><br/>
+  <%= f.input :guide_pose %><br/>
+  <%= f.simple_fields_for :poses do |builder| %>
+        <%= render "poses/form", :f => builder %>
   <% end %>
+
+  <h3>Entretien</h3>
+  <div>
+  <%= f.simple_fields_for :entretiens do |builder| %>
+    <%= render "entretiens/form", :f => builder %>
+  <% end %>
+  <div class="center clearfix">
+  <%= link_to_add_fields('Ajouter un entretien', f, :entretiens) %></div>
   </div>
 
-
+  <h3>Coûts/tarifs</h3>
+    cout moyen : <%= f.input :cout_annuel %><br/>
+    <%= f.input :cout_15ans %>
+  <div>
+  <%= f.simple_fields_for :couts do |builder| %>
+    <%= render "couts/form", :f => builder %>
+  <% end %>
+  <div class="center clearfix">
+  <%= link_to_add_fields('Ajouter une dépense', f, :couts) %></div>
+  </div>
   <%= f.submit%>
   <%end%>
 </div>
