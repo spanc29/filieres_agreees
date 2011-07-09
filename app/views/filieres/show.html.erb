@@ -49,7 +49,7 @@
       <% if @filiere.eq_hab %>
       <div class="info center">
         <% @filiere.eq_hab.each do |eq|%>
-          <% if eq.any? %>
+          <% unless eq.empty? %>
           <%= image_tag (eq+".png") %>
           <% else %>
           -
