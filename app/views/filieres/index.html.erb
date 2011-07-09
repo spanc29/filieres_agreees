@@ -72,7 +72,7 @@
   </div>
 
   <div class="span-6 last">
-      <% if filiere.photo.any? %>
+      <% unless filiere.photo.empty? %>
       <%= image_tag(filiere.photo, :size => "100x100", :alt => "photo", :class =>"class") %>
       <% else %>
       <%= image_tag("noimage.png", :size => "100x100", :alt => "pas de photo") %>
