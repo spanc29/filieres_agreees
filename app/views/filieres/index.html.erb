@@ -50,7 +50,7 @@
     <%= filiere.titulaire %><br/>
    <address><%= simple_format(filiere.adresse) %></address>
     <div>
-    <%= link_to sanitize(filiere.site_web), filiere.site_web, :target => "_blank" %><br/>
+    <%= link_to(filiere.site_web, filiere.site_web, :target => "_blank") %><br/>
     <%= mail_to(filiere.email) %></div>
   </div>
   <div class="span-6 border">
