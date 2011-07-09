@@ -2,20 +2,21 @@
 
 
 <div class="container noprint">
-<fieldset>
-  <legend>Recherche rapide</legend>
-<%= search_form_for @q do |f|%>
-  N° agr.ou marque<%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_cont, :size => "15" %>
-  Eq.hab. <%= f.search_field :eq_hab_eq, :size => "3" %>
+  <fieldset>
+    <legend>Recherche rapide</legend>
+  <%= search_form_for @q do |f|%>
+    <%= f.label(:num_agrement_or_titulaire_or_denomination_commerciale_cont, "N° agr.ou marque :") %><%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_cont, :size => "15" %>
+    <%= f.label(:type_filiere_cont,"type de filière :") %> <%= f.select :type_filiere_cont, ["","culture fixée","boues activées","massif filtrant","phytoépuration"] %>
   <br/>
-   <%= f.check_box :intermittence_true %>Interm |
-   <%= f.check_box :avec_nappe_true %>Pose Nappe |
-   <%= f.check_box :sortie_basse_false %> Sortie haute |
-   <%= f.check_box :elec_false %> Pas d'élect.
-
-  <%= f.submit "chercher"%> / <span class="ptt"> <%= link_to 'RAZ', root_path %></span>
-<%end%>
-</fieldset>
+    Eq.hab. <%= f.search_field :eq_hab_cont, :size => "3"%><span class="ptt quiet"> veuillez mettre votre nombre entre "". Exemple : "2" pour chercher 2 eq.hab </span>
+     <%= f.check_box :intermittence_true %>Interm |
+     <%= f.check_box :avec_nappe_true %>Pose Nappe |
+     <%= f.check_box :sortie_basse_false %> Sortie haute |
+     <%= f.check_box :elec_false %> Pas d'élect.
+  <br/>
+    <%= f.submit "chercher"%> / <span class="ptt"> <%= link_to 'RAZ', root_path %></span>
+  <%end%>
+  </fieldset>
 </div>
 
 <div class="container noprint">

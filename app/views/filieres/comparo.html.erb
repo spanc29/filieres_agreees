@@ -1,54 +1,57 @@
-<% title "Filieres" %>
+<% title "comparateur de filieres" %>
 
 <div class="container">
 <div class="noprint">
+    <div class="clearfix">
+    <%= link_to "retour à la liste", filieres_path, :class => "button" %>
+    </div>
 
-<%= link_to "retour à la liste", filieres_path, :class => "button" %>
-<fieldset>
-  <legend>Comparaison technique</legend>
-<%= form_tag(:comparo, :method => "get") do %>
-  <%= label_tag(:id1, "Choisir : ") %>
-  <%= text_field_tag (:id1) %>
-  <%= text_field_tag (:id2) %>
-  <%= submit_tag("comparer") %>
-<% end %>
-</fieldset>
-</div>
-<div class="ptt"><%= aide()%> Plus de détails - cliquer sur le n° agrément</div>
-<div class="span-12">
-  <% if @filier1%><%= render 'compar/list1', :fil => @filier1 %><%else%><h2>VIDE</h2><%end%>
-</div>
-<div class="span-12 last">
-  <% if @filier2%><%= render 'compar/list1', :fil => @filier2 %><%else%><h2>VIDE</h2><%end%>
+  <fieldset>
+    <legend>Comparaison technique</legend>
+  <%= form_tag(:comparo, :method => "get") do %>
+    <%= label_tag(:id1, "Choisir : ") %>
+    <%= select_tag :id1, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement") %>
+    <%= select_tag :id2, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement") %>
+    <%= submit_tag("comparer") %>
+  <% end %>
+  </fieldset>
 </div>
 
-<div class="span-12">
-  <% if @filier1 %><%= render 'compar/list2', :fil => @filier1 %><%end%>
-</div>
-<div class="span-12 last">
-  <% if @filier2 %><%= render 'compar/list2', :fil => @filier2 %><%end%>
-</div>
+  <div class="ptt"><%= aide()%> Plus de détails - cliquer sur le n° agrément</div>
+  <div class="span-12">
+    <% if @filier1%><%= render 'compar/list1', :fil => @filier1 %><%else%><h2>VIDE</h2><%end%>
+  </div>
+  <div class="span-12 last">
+    <% if @filier2%><%= render 'compar/list1', :fil => @filier2 %><%else%><h2>VIDE</h2><%end%>
+  </div>
 
-<div class="span-12">
-  <% if @filier1 %><%= render 'compar/list3', :fil => @filier1 %><%end%>
-</div>
-<div class="span-12 last">
-  <% if @filier2 %><%= render 'compar/list3', :fil => @filier2 %><%end%>
-</div>
+  <div class="span-12">
+    <% if @filier1 %><%= render 'compar/list2', :fil => @filier1 %><%end%>
+  </div>
+  <div class="span-12 last">
+    <% if @filier2 %><%= render 'compar/list2', :fil => @filier2 %><%end%>
+  </div>
 
-<div class="span-12">
-  <% if @filier1 %><%= render 'compar/list4', :fil => @filier1 %><%end%>
-</div>
-<div class="span-12 last">
-  <% if @filier2 %><%= render 'compar/list4', :fil => @filier2 %><%end%>
-</div>
+  <div class="span-12">
+    <% if @filier1 %><%= render 'compar/list3', :fil => @filier1 %><%end%>
+  </div>
+  <div class="span-12 last">
+    <% if @filier2 %><%= render 'compar/list3', :fil => @filier2 %><%end%>
+  </div>
 
-<div class="span-12">
-  <% if @filier1 %><%= render 'compar/list5', :fil => @filier1 %><%end%>
-</div>
-<div class="span-12 last">
-  <% if @filier2 %><%= render 'compar/list5', :fil => @filier2 %><%end%>
-</div>
+  <div class="span-12">
+    <% if @filier1 %><%= render 'compar/list4', :fil => @filier1 %><%end%>
+  </div>
+  <div class="span-12 last">
+    <% if @filier2 %><%= render 'compar/list4', :fil => @filier2 %><%end%>
+  </div>
+
+  <div class="span-12">
+    <% if @filier1 %><%= render 'compar/list5', :fil => @filier1 %><%end%>
+  </div>
+  <div class="span-12 last">
+    <% if @filier2 %><%= render 'compar/list5', :fil => @filier2 %><%end%>
+  </div>
 </div>
 <br/>
 <br/>
