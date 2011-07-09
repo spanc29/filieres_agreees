@@ -37,10 +37,10 @@
       <div class="outthin center">
         <% if filiere.eq_hab %>
         Eq.Hab. :<% filiere.eq_hab.each do |eq|%>
-          <% if eq.any? %>
-          <%= image_tag (eq+".png") %>
-          <% else %>
+          <% if eq.empty? %>
           -
+          <% else %>
+          <%= image_tag (eq+".png") %>
           <%end%>
         <%end %>
         <%end%>

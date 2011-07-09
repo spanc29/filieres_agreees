@@ -64,9 +64,8 @@
   </div>
 
   <h3>Coûts/tarifs</h3>
-    cout annuel moyen : <%= f.input :cout_annuel %><br/>
-    cout 15 ans entre <%= f.input :cout_15ans_min %> et <%= f.input :cout_15ans_max %>
-  <div>
+    <%= f.input :cout_annuel %><br/>
+    cout 15 ans : entre <%= f.input :cout_15ans_min, :label => false %> et <%= f.input :cout_15ans_max, :label => false  %>
   <%= f.simple_fields_for :couts do |builder| %>
     <%= render "couts/form", :f => builder %>
   <% end %>
