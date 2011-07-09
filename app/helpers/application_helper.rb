@@ -13,7 +13,6 @@ module ApplicationHelper
   end
 
 
-
   def img_boolean(test ='false',tex = 'faux')
       if test
       image_tag("tick-button.png", :alt => tex, :title => tex)

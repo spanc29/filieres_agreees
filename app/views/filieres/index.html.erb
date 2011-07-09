@@ -4,13 +4,15 @@
 <div class="container noprint">
 <fieldset>
   <legend>Recherche rapide</legend>
-<%= form_for @search do |f|%>
-  N° agr.ou marque<%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_contains, :size => "10" %>
-  Eq.hab min <%= f.number_field :eq_hab_mini_gte, :size => "3" %>
-  Eq.hab max <%= f.number_field :eq_hab_max_lte, :size => "3" %>
-  Interm : <%= f.check_box :intermittence_is_true %>
-  Nappe : <%= f.check_box :avec_nappe_is_true %>
-  Bacterio : <%= f.check_box :test_bacterio_is_true %>
+<%= search_form_for @q do |f|%>
+  N° agr.ou marque<%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_cont, :size => "15" %>
+  Eq.hab. <%= f.search_field :eq_hab_eq, :size => "3" %>
+  <br/>
+   <%= f.check_box :intermittence_true %>Interm |
+   <%= f.check_box :avec_nappe_true %>Pose Nappe |
+   <%= f.check_box :sortie_basse_false %> Sortie haute |
+   <%= f.check_box :elec_false %> Pas d'élect.
+
   <%= f.submit "chercher"%> / <span class="ptt"> <%= link_to 'RAZ', root_path %></span>
 <%end%>
 </fieldset>
@@ -18,15 +20,7 @@
 
 <div class="container noprint">
 <div class="span-24 ptt bottom">
-  trier par :<br/>
-    <%= sort_link @search, :num_agrement, "Num.Agrément" %>
-    <%= sort_link @search, :denomination_commerciale, "Nom" %>
-    <%= sort_link @search, :titulaire, "Constructeur" %>
-    <%= sort_link @search, :eq_hab_max, "eq.hab max" %>
-    <%= sort_link @search, :type_filiere, "technologie" %>
-    <%= sort_link @search, :intermittence, "Intermittence" %>
-    <%= sort_link @search, :avec_nappe, "Nappe" %>
-    <%= sort_link @search, :test_bacterio, "Bacterio" %>
+
   </div>
 </div>
 
@@ -34,19 +28,32 @@
   <div class="container box outline">
 
   <div class="span-24">
-    <h3>
-      <%= link_to filiere.num_agrement,filiere %> / <%=filiere.denomination_commerciale  %>
-    </h3>
+    <h2>
+      <%= link_to (filiere.num_agrement)+" / "+( filiere.denomination_commerciale),filiere %>
+    </h2>
   </div>
+  <div class="span-24">
 
+      <div class="outthin center">
+        <% if filiere.eq_hab %>
+        Eq.Hab. :<% filiere.eq_hab.each do |eq|%>
+          <% if eq.any? %>
+          <%= image_tag (eq+".png") %>
+          <% else %>
+          -
+          <%end%>
+        <%end %>
+        <%end%>
+        </div>
+  </div>
   <div class="span-6 border">
     <%= filiere.titulaire %><br/>
    <address><%= simple_format(filiere.adresse) %></address>
-    <%= sanitize(auto_link(filiere.site_web, :target => "_blank")) %>
-    <%= mail_to(filiere.email) %>
+    <div>
+    <%= link_to (sanitize(filiere.site_web), filiere.site_web, :target => "_blank") %><br/>
+    <%= mail_to(filiere.email) %></div>
   </div>
   <div class="span-6 border">
-    <div class="info ">de : <span class="grd loud"><%= filiere.eq_hab_mini %></span> à <span class="grd loud"><%= filiere.eq_hab_max %></span> eq.hab</div>
     <%= filiere.type_filiere %><br/>
     <div class="small"><%= truncate(filiere.description_sommaire, :length => 120) %></div>
 
@@ -65,7 +72,11 @@
   </div>
 
   <div class="span-6 last">
+      <% if filiere.photo.any? %>
       <%= image_tag(filiere.photo, :size => "100x100", :alt => "photo", :class =>"class") %>
+      <% else %>
+      <%= image_tag("noimage.png", :size => "100x100", :alt => "pas de photo") %>
+      <%end%>
       <div class="tptt quiet">
         MàJ <%= l(filiere.updated_at) %>
       </div>

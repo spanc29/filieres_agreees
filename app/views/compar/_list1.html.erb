@@ -1,0 +1,37 @@
+<% if fil%>
+<h1><%=link_to (fil.num_agrement), fil%></h1>
+<h2><%= fil.denomination_commerciale %></h2>
+<table>
+  <tbody>
+    <tr>
+      <td class="small">constructeur</td>
+      <td><%= fil.titulaire %></td>
+    </tr>
+    <tr>
+      <td class="small">nbr eq.hab</td>
+      <td><% fil.eq_hab.each do |eq|%>
+          <%= eq %> -
+      <%end %></td>
+    </tr>
+    <tr>
+      <td class="small">intermittence</td>
+      <td><%= img_boolean(fil.intermittence,'intermittence') %></td>
+    </tr>
+    <tr>
+      <td class="small">pose en nappe</td>
+      <td><%= img_boolean(fil.avec_nappe,'pose en nappe') %></td>
+    </tr>
+    <tr>
+      <td class="small">test bactério</td>
+      <td><%= img_boolean(fil.test_bacterio,'test bacterio') %></td>
+    </tr>
+    <tr>
+      <td class="small">description sommaire</td>
+      <td class="ptt"><%= simple_format(fil.description_sommaire) %></td>
+    </tr>
+  </tbody>
+</table>
+<span class="ptt right"> <%= link_to "plus de détails", fil %></span>
+<%else%>
+  <h2>VIDE</h2>
+<%end%>

@@ -1,8 +1,8 @@
 class FilieresController < ApplicationController
 
   def index
-  @search = Filiere.search(params[:search])
-  @filieres = @search.all
+  @q = Filiere.search(params[:q])
+  @filieres = @q.result(:distinct => false)
   end
 
   def comparo

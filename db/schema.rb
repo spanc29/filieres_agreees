@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110703193017) do
+ActiveRecord::Schema.define(:version => 20110707194409) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -50,8 +50,6 @@ ActiveRecord::Schema.define(:version => 20110703193017) do
     t.string   "type_filiere"
     t.string   "description_sommaire"
     t.text     "description"
-    t.integer  "eq_hab_mini"
-    t.integer  "eq_hab_max"
     t.boolean  "intermittence"
     t.boolean  "avec_nappe"
     t.boolean  "test_bacterio"
@@ -75,7 +73,10 @@ ActiveRecord::Schema.define(:version => 20110703193017) do
     t.string   "guide_pose"
     t.integer  "conso_elect"
     t.integer  "cout_annuel"
-    t.integer  "cout_15ans"
+    t.integer  "cout_15ans_min"
+    t.integer  "cout_15ans_max"
+    t.string   "lien_guide_pose"
+    t.string   "eq_hab"
   end
 
   create_table "poses", :force => true do |t|

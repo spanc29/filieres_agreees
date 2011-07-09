@@ -1,0 +1,16 @@
+<!-- coûts -->
+<table>
+  <caption><h3>Coûts</h3></caption>
+  <tbody>
+    <tr>
+      <td class="small">Coûts annuels moyen : </td>
+      <td><strong><%= number_to_currency(fil.cout_annuel) %> TTC</strong></td>
+    </tr>
+    <tr>
+      <td class="small">Coûts sur 15 ans (min/max) </td>
+      <td><strong>entre <strong><%= number_to_currency(fil.cout_15ans_min) %></strong> et <strong><%= number_to_currency(fil.cout_15ans_max) %></strong> TTC</td>
+    </tr>
+  </tbody>
+
+</table>
+<span class="ptt right"> <%= link_to "plus de détails", fil %></span>

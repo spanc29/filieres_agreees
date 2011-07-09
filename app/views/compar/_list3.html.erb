@@ -1,0 +1,25 @@
+<table>
+  <caption><h3>performances annoncées</h3></caption>
+  <tbody>
+    <tr>
+          <td class="small">DCO :</td>
+          <td><strong><%= fil.dco %></strong> mg/L</td>
+          <td><strong><%= fil.PCdoc %></strong> %</td>
+        </tr>
+        <tr>
+          <td class="small">DBO<sub>5</sub> :</td>
+          <td><strong><%= fil.dbo5 %></strong> mg/L</td>
+          <td><strong><%= fil.PCdbo %></strong> %</td>
+        </tr>
+        <tr>
+          <td class="small">MES :</td>
+          <td><strong><%= fil.mes %></strong> mg/L</td>
+          <td><strong><%= fil.PCmes %></strong> %</td>
+        </tr>
+        <tr>
+        <td class="small">Abbattement bactériologique :</td>
+        <td> <% if fil.logbacter %> <strong><%= fil.logbacter %></strong> LOG <% else %> Inconnu <%end%></td>
+        <td></td>
+        </tr>
+  </tbody>
+</table>

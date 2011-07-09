@@ -24,11 +24,13 @@ gem 'pg'
 # gem 'aws-s3', :require => 'aws/s3'
 
 gem 'cancan'
-gem 'meta_where'
-gem 'meta_search'
+#gem 'meta_where'
+#gem 'meta_search'
 gem 'simple_form'
 gem 'nifty-generators', :group => :development
 gem 'jquery-rails'
+gem 'ransack'
+gem 'squeel'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

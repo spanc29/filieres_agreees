@@ -20,14 +20,13 @@
   <%= f.input :description %><br/>
 
   <h3>conditions agrément</h3>
-  <%= f.input :eq_hab_mini, :collection => 0..20 %><br/>
-  <%= f.input :eq_hab_max, :collection => 0..20 %><br/>
+  <%= f.input :eq_hab, :collection => 1..20, :as => :check_boxes %><br/>
   <div class="center"><%= f.input :intermittence %>
   <%= f.input :avec_nappe %>
   <%= f.input :test_bacterio %>
   <%= f.input :elec %>
   <%= f.input :sortie_basse %></div>
-  <%= f.input :ref_guide_util %><br/>
+  <%= f.input :ref_guide_util%><br/>
 
   <h3>performances</h3>
   <div class=""><%= f.input :mes, :class =>"" %> mg/L / <%= f.input :PCmes, :label => false %> %</div>
@@ -50,6 +49,7 @@
 
   <h3>conditions de pose</h3>
   <%= f.input :guide_pose %><br/>
+  <%= f.input :lien_guide_pose %><br/>
   <%= f.simple_fields_for :poses do |builder| %>
         <%= render "poses/form", :f => builder %>
   <% end %>
@@ -64,8 +64,8 @@
   </div>
 
   <h3>Coûts/tarifs</h3>
-    cout moyen : <%= f.input :cout_annuel %><br/>
-    <%= f.input :cout_15ans %>
+    cout annuel moyen : <%= f.input :cout_annuel %><br/>
+    cout 15 ans entre <%= f.input :cout_15ans_min %> et <%= f.input :cout_15ans_max %>
   <div>
   <%= f.simple_fields_for :couts do |builder| %>
     <%= render "couts/form", :f => builder %>

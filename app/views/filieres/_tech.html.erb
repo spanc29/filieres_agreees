@@ -1,11 +1,34 @@
-élèments : <strong> <%= tec.nom_cuve %> - <%= tec.type_cuve %> (<%= tec.materiaux %>)</strong><br/>
-dim. (Long.x larg.x haut.) en m : <strong><%= tec.longueur %> x <%= tec.largeur %> x <%= tec.hauteur %></strong><br/>
-poids (à vide / équipé)  : <strong><%= tec.poids_vide %> kg </strong>  /<strong><%= tec.poids_equipe %> kg</strong><br/>
-diff. entrée-sortie : <strong><%= tec.diff_ent_sort %> cm : </strong>
+<table>
+  <tbody>
+    <tr>
+      <td>éléments :</td>
+      <td><strong> <%= tec.nom_cuve %> - <%= tec.type_cuve %> (<%= tec.materiaux %>)</strong></td>
+    </tr>
+    <tr>
+      <td>dim.<br/> (Long.x larg.x haut.) en cm :</td>
+      <td><strong><%= tec.longueur %> x <%= tec.largeur %> x <%= tec.hauteur %></strong></td>
+    </tr>
+    <tr>
+      <td>poids<br/> (à vide/équipé) en kg:</td>
+      <td><strong><%= tec.poids_vide %></strong>  /<strong><%= tec.poids_equipe %></strong></td>
+    </tr>
+    <tr>
+      <td>diff. entrée-sortie :</td>
+      <td><strong><%= tec.diff_ent_sort %> </strong>cm
       <% if @filiere.sortie_basse == true %>
-        <%=image_tag("arrow-270.png") %> sortie basse<br/>
+        <em>(<%=image_tag("arrow-270.png") %> sortie basse)</em><br/>
       <% else %>
-        <%=image_tag("arrow-090.png") %> sortie haute<br/>
-      <%end%>
-Puissance électrique totale installée : <strong><%= tec.puiss_elect_total %> W </strong><br/>
-obs. : <div class="small"><%= simple_format(tec.commentaires) %></div><br/>
+        <em>(<%=image_tag("arrow-090.png") %> sortie haute)</em><br/>
+      <%end%></td>
+    </tr>
+    <tr>
+      <td>Puissance électrique<br/>totale installée :</td>
+      <td><strong><%= tec.puiss_elect_total %> </strong>Watts
+        <% if @filiere.elec == true %>
+          <em>(<%= image_tag("lightning.png") %> Conso. élec.)</em><br/>
+        <%end%>
+       </td>
+    </tr>
+  </tbody>
+</table>
+obs. : <div class="small"><%= simple_format(tec.commentaires) %></div>

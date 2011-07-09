@@ -1,0 +1,15 @@
+<!-- fiches techniques -->
+<table>
+  <caption><h3>Entretiens</h3></caption>
+  <tbody>
+    <% fil.entretiens.each do |e|%>
+    <tr>
+      <td class="small">entretiens </td>
+      <td>tous les <strong><%= e.efrequence %></strong> mois</td>
+      <td><%= e.eoperation %></td>
+      <td><%= e.eouvrage %></td>
+    </tr>
+    <%end %>
+  </tbody>
+</table>
+<span class="ptt right"> <%= link_to "plus de détails", fil %></span>

@@ -12,14 +12,14 @@
     <%= yield(:head) %>
   </head>
   <body>
-    <div class="page container">
-          <div class="right">
+  <div class="page box container noprint">
+      <div class="right">
           <a href="http://www.spanc29.net">Un service de spanc29.net</a><br/>
-          <a href="http://www.assainissement-non-collectif.developpement-durable.gouv.fr/article.php3?id_article=185"> site officiel du ministère</a>
-          </div>
-        <h1>FILIERES AGREEES</h1>
-
-        <div id="nav">
+          <a href="http://www.assainissement-non-collectif.developpement-durable.gouv.fr/article.php3?id_article=185"> site officiel du ministère</a><br/>
+          <%= link_to "Pour que ce site reste sans pub", '/don.html', :title => "FAIRE UN DON" %>
+      </div>
+      <h1>FILIERES AGREEES</h1>
+      <div id="nav">
         <ul>
           <li><%= link_to "COMPARATEUR", comparo_path, :class => "button", :title => "comparer 2 filières" %></li>
           <li><%= link_to "AIDE", '/aide.html', :class => "button", :title => "AIDE" %><li>
@@ -28,8 +28,8 @@
             <%= link_to "Nouvelle Filiere", new_filiere_path, :class => "button" %>
           <%end%></li>
         </ul>
-        </div>
-    </div>
+      </div>
+  </div>
 
       <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
@@ -37,18 +37,17 @@
       <%= yield %>
 
     <footer>
-    <div class="footer box center">
-    <div class="small quiet">
-      Veuillez lire l'avertissement - Les marques et logo appartiennent à leur propriétaire respectif. photo et visuel non contractuel. <br/>
-      Tarifs et informations sont donnés à titre indicatif non contractuel, sous toutes réserves de modifications. Seules les données officielles ou des constructeurs font foi.
-    </div>
-
-    <% if current_user %>
-    <%= link_to "logout", logout_path %>
-    <% else %>
-    <%= link_to "login", login_path %>
-    <%end%>
-    </div>
+      <div class="footer container box center">
+        <div class="small quiet">
+          Veuillez lire l'avertissement - Les marques et logo appartiennent à leur propriétaire respectif. photo et visuel non contractuel. <br/>
+          Tarifs et informations sont donnés à titre indicatif non contractuel, sous toutes réserves de modifications. Seules les données officielles ou des constructeurs font foi.
+        </div>
+        <% if current_user %>
+        <%= link_to "logout", logout_path %>
+        <% else %>
+        <%= link_to "login", login_path %>
+        <%end%>
+      </div>
     </footer>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!-- fiches techniques -->
+<table>
+  <caption><h3>techniques</h3></caption>
+  <tbody>
+    <% fil.techniques.each do |t|%>
+    <tr>
+      <td class="small">cuve</td>
+      <td><strong><%= t.nom_cuve%>/<%= t.type_cuve %></strong></td>
+    </tr>
+    <tr>
+      <td class="small">matériaux</td>
+      <td><strong><%= t.materiaux%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">hauteur x longueur x largeur (cm)</td>
+      <td><strong><%= t.hauteur%></strong> x <strong><%= t.longueur%></strong> x <strong><%= t.largeur%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">diff. entrée sortie (cm)</td>
+      <td><strong><%= t.diff_ent_sort %></strong></td>
+    </tr>
+    <tr>
+      <td class="small">Poids (kg) vide / équipé </td>
+      <td><strong><%= t.poids_vide %> / <%= t.poids_equipe %></strong></td>
+    </tr>
+    <tr>
+      <td class="small">Puissance élect. installée (en W)</td>
+      <td><strong><%= t.puiss_elect_total%></strong></td>
+    </tr>
+    <%end %>
+  </tbody>
+</table>

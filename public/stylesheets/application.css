@@ -1,10 +1,6 @@
-body {
-  background-color: #E6E6FA;
-  font-size: 14px;
-}
+body {background-color: #E6E6FA;font-size: 14px;}
 
-.center {
-  text-align: center;}
+.center {text-align: center;}
 ul {margin:0;padding:0;}
 #nav li, #nav li.current {float:left;list-style-type:none;margin: 0px 2px 0px 0px;padding: 0px 0px 0px 0px;white-space:nowrap;}
 
@@ -37,20 +33,23 @@ font-family: 'Cherry Cream Soda', arial, serif;
   }
 
 .ptt {font-size:0.8em;}
-.tptt {font-size:0.6em;}
+.tptt {font-size:0.7em;}
 .grd {font-size:1.5em;}
 
 .page {
   width: 950px;
   margin: 0 auto;
-  background-color: #FFF;
   padding: 20px 40px;
-  margin-top: 20px;
 }
-.decal{
-  margin-left: 250px}
+.decal{margin-left: 250px}
+
+table td.small{
+font-size:.8em;margin-bottom:1.875em;line-height:1.875em;
+width: 150px;
+}
 
 .outline {padding:1em;margin-bottom:0.5em;border: 1px solid #ddd;-moz-border-radius: 1em;-webkit-border-radius: 1em;border-radius: 1em;}
+.outthin {padding:0.5em;margin-bottom:0.2em;border: 1px solid #ddd;-moz-border-radius: 1em;-webkit-border-radius: 1em;border-radius: 1em;}
 
 #flash_notice, #flash_error, #flash_alert {
   padding: 5px 8px;
