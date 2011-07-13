@@ -103,7 +103,7 @@
 <div class="container">
 <h2>conditions de pose <%= aide("pose")%></h2>
 <div class="info">
-d'après : <strong><%= @filiere.ref_guide_util %></strong> <% if @filiere.lien_guide_pose %> (<%= link_to 'charger', @filiere.lien_guide_pose, :target => "_blank" %>) <%end%></div>
+d'après : <strong><%= @filiere.guide_pose %></strong> <% if @filiere.lien_guide_pose %> (<%= link_to 'charger', @filiere.lien_guide_pose, :target => "_blank" %>) <%end%></div>
 
 <div class="span-8 box">
   <% @filiere.poses.each do |pose|%>

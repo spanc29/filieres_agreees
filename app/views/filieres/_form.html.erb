@@ -29,16 +29,17 @@
   <%= f.input :ref_guide_util%><br/>
 
   <h3>performances</h3>
-  <div class=""><%= f.input :mes, :class =>"" %> mg/L / <%= f.input :PCmes, :label => false %> %</div>
-  <div class=""><%= f.input :dbo5 %> mg/L / <%= f.input :PCdbo, :label => false %> %</div>
-  <div class=""><%= f.input :dco %> mg/L / <%= f.input :PCdoc, :label => false %> %</div>
+  <div><%= f.input :mes %> mg/L / <%= f.input :PCmes, :label => false %> %</div>
+  <div><%= f.input :dbo5 %> mg/L / <%= f.input :PCdbo, :label => false %> %</div>
+  <div><%= f.input :dco %> mg/L / <%= f.input :PCdoc, :label => false %> %</div>
+  <div><%= f.input :logbacter, :label => "abatt. bacterio" %> LOG </div>
 
   <%= f.input :pourcent_vidange, :collection=> 10..80 %><br/>
   <%= f.input :ouvrage_vidange %><br/>
   <%= f.input :periode_vidange %><br/>
 
   <h3>techniques</h3>
-  conso elect annuelle <% f.input :conso_elect, :label => false %>
+  conso elect annuelle <%= f.input :conso_elect, :label => false %>
   <div>
   <%= f.simple_fields_for :techniques do |builder| %>
     <%= render "techniques/form", :f => builder %>
