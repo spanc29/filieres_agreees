@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110707194409) do
+ActiveRecord::Schema.define(:version => 20110713191544) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -26,7 +26,6 @@ ActiveRecord::Schema.define(:version => 20110707194409) do
   create_table "entretiens", :force => true do |t|
     t.string   "eouvrage"
     t.string   "eoperation"
-    t.string   "efrequence"
     t.string   "erealisation"
     t.text     "eobservat"
     t.datetime "created_at"
@@ -34,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20110707194409) do
     t.integer  "filiere_id"
     t.integer  "ecout_min"
     t.integer  "ecout_max"
+    t.integer  "efrequence"
   end
 
   create_table "filieres", :force => true do |t|

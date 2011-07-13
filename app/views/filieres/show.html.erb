@@ -33,7 +33,7 @@
 <!-- description / caracteristique techniques -->
 <div class="container">
   <div class="span-24">
-  <h2>Description <%= aide()%></h2>
+  <h2>Description <%= aide("description")%></h2>
     <div class="info"> type : <strong><%= @filiere.type_filiere %> --> <%= @filiere.description_sommaire %></strong></div>
     Description :
     <div class="small"><code><%= simple_format(@filiere.description) %></code></div>
@@ -43,7 +43,7 @@
 
 <!-- agréement / technic -->
 <div class="container">
-  <h2>Caractéristiques <%= aide()%></h2>
+  <h2>Caractéristiques <%= aide("technique")%></h2>
   <div class="span-24">
     Eq Hab :
       <% if @filiere.eq_hab %>
@@ -68,7 +68,7 @@
     <hr/>guide technique référence : <strong><%= @filiere.ref_guide_util %></strong>
 
 
-    <h3>performances moyennes annoncées </h3>
+    <h3>performances moyennes annoncées <%= aide("perfo")%> </h3>
     <table>
       <tbody>
         <tr>
@@ -101,7 +101,7 @@
 
 <!-- condition pose -->
 <div class="container">
-<h2>conditions de pose <%= aide()%></h2>
+<h2>conditions de pose <%= aide("pose")%></h2>
 <div class="info">
 d'après : <strong><%= @filiere.ref_guide_util %></strong> <% if @filiere.lien_guide_pose %> (<%= link_to 'charger', @filiere.lien_guide_pose, :target => "_blank" %>) <%end%></div>
 
@@ -133,7 +133,7 @@ d'après : <strong><%= @filiere.ref_guide_util %></strong> <% if @filiere.lien_g
   </div>
 
 <div class="span-8 box last">
-  <h3>évacuation/dispersion</h3>
+  <h3>évacuation/dispersion <%= aide("dispersion")%></h3>
     <div class="small loud"><%= simple_format(pose.evacuation) %></div>
   </div>
 <%end %>

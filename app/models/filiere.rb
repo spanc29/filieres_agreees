@@ -10,4 +10,6 @@ class Filiere < ActiveRecord::Base
   accepts_nested_attributes_for :couts, :allow_destroy => true
 
   serialize :eq_hab
+
+  default_scope order("num_agrement DESC")
 end

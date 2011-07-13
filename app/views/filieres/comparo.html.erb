@@ -7,7 +7,7 @@
     </div>
 
   <fieldset>
-    <legend>Comparaison technique</legend>
+    <legend>Comparaison technique <%= aide("comparo")%> </legend>
   <%= form_tag(:comparo, :method => "get") do %>
     <%= label_tag(:id1, "Choisir : ") %>
     <%= select_tag :id1, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement") %>
@@ -17,7 +17,7 @@
   </fieldset>
 </div>
 
-  <div class="ptt"><%= aide()%> Plus de détails - cliquer sur le n° agrément</div>
+  <div class="ptt"> pour voir la fiche - cliquer sur le n° agrément</div>
   <div class="span-12">
     <% if @filier1%><%= render 'compar/list1', :fil => @filier1 %><%else%><h2>VIDE</h2><%end%>
   </div>
