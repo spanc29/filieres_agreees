@@ -23,10 +23,14 @@
       <td class="small">Poids (kg) vide / équipé </td>
       <td><strong><%= t.poids_vide %> / <%= t.poids_equipe %></strong></td>
     </tr>
+    <%end %>
     <tr>
       <td class="small">Puissance élect. installée (en W)</td>
-      <td><strong><%= t.puiss_elect_total%></strong></td>
+      <td><strong><%= fil.puiss_totale%></strong></td>
     </tr>
-    <%end %>
+    <tr>
+      <td class="small">Conso élect. annuelle (en Wh/an)</td>
+      <td><strong><%= fil.conso_elect%></strong></td>
+    </tr>
   </tbody>
 </table>

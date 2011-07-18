@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110716215002) do
+ActiveRecord::Schema.define(:version => 20110718210235) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(:version => 20110716215002) do
     t.integer  "updated_by"
     t.integer  "creator_id"
     t.integer  "updater_id"
+    t.integer  "puiss_totale"
+    t.string   "elect_obs"
   end
 
   create_table "poses", :force => true do |t|
@@ -99,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20110716215002) do
   create_table "techniques", :force => true do |t|
     t.string   "poids_vide"
     t.string   "poids_equipe"
+    t.string   "volume_utile"
     t.string   "materiaux"
     t.integer  "filiere_id"
     t.text     "commentaires"

@@ -39,7 +39,9 @@
   <%= f.input :periode_vidange %><br/>
 
   <h3>techniques</h3>
-  conso elect annuelle <%= f.input :conso_elect, :label => false %>
+  puissance elect totale <%= f.input :puiss_totale, :label => false %><br/>
+  conso elect annuelle <%= f.input :conso_elect, :label => false %><br/>
+  obs sur elect. <%= f.input :elect_obs, :label => false %><br/>
   <div>
   <%= f.simple_fields_for :techniques do |builder| %>
     <%= render "techniques/form", :f => builder %>

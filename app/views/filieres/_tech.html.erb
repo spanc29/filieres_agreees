@@ -21,14 +21,6 @@
         <em>(<%=image_tag("arrow-090.png") %> sortie haute)</em><br/>
       <%end%></td>
     </tr>
-    <tr>
-      <td>Puissance électrique<br/>totale installée :</td>
-      <td><strong><%= tec.puiss_elect_total %> </strong>Watts
-        <% if @filiere.elec == true %>
-          <em>(<%= image_tag("lightning.png") %> Conso. élec.)</em><br/>
-        <%end%>
-       </td>
-    </tr>
   </tbody>
 </table>
 obs. : <div class="small"><%= simple_format(tec.commentaires) %></div>
