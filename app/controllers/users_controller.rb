@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url, :notice => "Merci, vous êtes maintenant connecté(e)"
+      redirect_to root_url, :notice => "Merci, vous pouvez travaille"
     else
       render :action => 'new'
     end
