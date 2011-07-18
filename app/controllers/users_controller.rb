@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :except => [:new, :create]
+  before_filter :login_required
 
   def new
     @user = User.new
@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url, :notice => "Thank you for signing up! You are now logged in."
+      redirect_to root_url, :notice => "Merci, vous êtes maintenant connecté(e)"
     else
       render :action => 'new'
     end

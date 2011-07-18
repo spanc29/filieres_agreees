@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110713191544) do
+ActiveRecord::Schema.define(:version => 20110716215002) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -77,6 +77,10 @@ ActiveRecord::Schema.define(:version => 20110713191544) do
     t.integer  "cout_15ans_max"
     t.string   "lien_guide_pose"
     t.string   "eq_hab"
+    t.integer  "created_by"
+    t.integer  "updated_by"
+    t.integer  "creator_id"
+    t.integer  "updater_id"
   end
 
   create_table "poses", :force => true do |t|

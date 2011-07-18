@@ -31,6 +31,8 @@ gem 'nifty-generators', :group => :development
 gem 'jquery-rails'
 gem 'ransack'
 gem 'squeel'
+gem 'userstamp'
+gem 'taps'
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators
