@@ -19,7 +19,11 @@
       <p>JORF n° : <strong><%= @filiere.num_avis_jo %></strong> du <%= l(@filiere.date_JO) %></p>
       <p>lien legifrance : <strong><%= link_to @filiere.texte_NOR_jo, @filiere.lien_legifrance %></strong></p>
       <p class="ptt quiet">fiche mise à jour le <%= l(@filiere.updated_at) %>
-      <% if can? :destroy, Filiere %> par <% @user = User.find_by_id(@filiere.updater_id) %> <%= @user.username %> <%end%>
+      <% if can? :destroy, Filiere %>
+        <% if @filiere.updater_id %>
+       par <%= User.find_by_id(@filiere.updater_id).username %>
+        <%end%>
+       <%end%>
       </p>
     </div>
     <div class="span-8 last">
