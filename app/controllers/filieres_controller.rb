@@ -2,8 +2,8 @@ class FilieresController < ApplicationController
 
   def index
   @q = Filiere.search(params[:q])
-  @filieres = @q.result(:distinct => false)
-
+  @fili = @q.result(:distinct => false)
+  @filieres = @fili.order("num_agrement ASC")
   end
 
   def comparo

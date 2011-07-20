@@ -1,6 +1,6 @@
 <div class="fields outline">
 <div class="right"><%= link_to_remove_fields "effacer", f %></div>
-<%= f.input :poste, :collection => ["installation","maintenance","évacuation boues","frais fonctionnement","analyses","assurance","petit entretien","renouvellement support","voir observations"], :as => :select %><br/>
+<%= f.input :poste, :collection => ["installation","contrat de maintenance","maintenance","évacuation boues","frais fonctionnement","analyses","assurance","petit entretien","renouvellement support","voir observations"], :as => :select %><br/>
 <div class="center">
 <%= f.input :duree, :collection => ["1 an", "15 ans", "ponctuel"], :as => :radio %><br/>
 <%= f.input :cout_min %><br/>
