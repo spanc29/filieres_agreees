@@ -6,7 +6,7 @@
     <legend>Recherche rapide <%= aide("accueil")%></legend>
   <%= search_form_for @q do |f|%>
     <%= f.label(:num_agrement_or_titulaire_or_denomination_commerciale_cont, "N° agr.ou marque :") %><%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_cont, :size => "15" %>
-    <%= f.label(:type_filiere_cont,"type de filière :") %> <%= f.select :type_filiere_cont, ["","culture fixée","boues activées","massif filtrant","phytoépuration"] %>
+    <%= f.label(:type_filiere_cont,"type de filière :") %> <%= f.select :type_filiere_cont, ["","culture fixée","culture libre","massif filtrant","phytoépuration","cult.libre + filtration"] %>
   <br/>
     Eq.hab. <%= f.search_field :eq_hab_cont, :size => "3"%><span class="ptt quiet"> veuillez mettre votre nombre entre "". Exemple : "2" pour chercher 2 eq.hab </span>
      <%= f.check_box :intermittence_true %>Interm |
@@ -56,8 +56,8 @@
     <%= mail_to(filiere.email) %></div>
   </div>
   <div class="span-6 border">
-    <%= filiere.type_filiere %><br/>
-    <div class="small"><%= truncate(filiere.description_sommaire, :length => 120) %></div>
+    <strong><%= filiere.type_filiere %></strong><br/>
+    <div class="small"><%= filiere.description_sommaire %></div>
 
   </div>
   <div class="span-6 border">
@@ -69,8 +69,8 @@
         <%=image_tag("lightning.png") %> Conso. Electricité <%end%><br/>
       <% if filiere.sortie_basse == true %>
         <%=image_tag("arrow-270.png") %> sortie basse <%end%><br/>
-      vidange : <%= filiere.ouvrage_vidange %> à <%= filiere.pourcent_vidange %> % <br/>
-      <%= filiere.ref_guide_util %></div>
+      Vidange : <%= filiere.ouvrage_vidange %> à <%= filiere.pourcent_vidange %> % <br/>
+      Agréée le <%= l(filiere.date_JO) %> (JORF n°<%= filiere.num_avis_jo %>) par <%= filiere.organisme_test %></div>
   </div>
 
   <div class="span-6 last">

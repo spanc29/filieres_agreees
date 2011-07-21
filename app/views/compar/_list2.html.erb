@@ -4,7 +4,9 @@
   <tbody>
     <% fil.techniques.each do |t|%>
     <tr>
-      <td class="small">cuve</td>
+    <td><hr/></td></tr>
+    <tr>
+      <td class="small">cuve/ouvrage</td>
       <td><strong><%= t.nom_cuve%>/<%= t.type_cuve %></strong></td>
     </tr>
     <tr>
@@ -24,13 +26,6 @@
       <td><strong><%= t.poids_vide %> / <%= t.poids_equipe %></strong></td>
     </tr>
     <%end %>
-    <tr>
-      <td class="small">Puissance élect. installée (en W)</td>
-      <td><strong><%= fil.puiss_totale%></strong></td>
-    </tr>
-    <tr>
-      <td class="small">Conso élect. annuelle (en Wh/an)</td>
-      <td><strong><%= fil.conso_elect%></strong></td>
-    </tr>
+
   </tbody>
 </table>

@@ -22,7 +22,6 @@ font-family: 'Cherry Cream Soda', arial, serif;
   font-size:180%;
   line-height:0.9em;
   padding:15px 10px 0px;
-  text-transform:lowercase;
   word-spacing:1px;
   }
 
@@ -32,6 +31,7 @@ font-family: 'Cherry Cream Soda', arial, serif;
   color:#0A4369;
   font-size:1em;
   padding:15px 10px 0px;
+  text-transform:lowercase;
   word-spacing:1px;
   }
 

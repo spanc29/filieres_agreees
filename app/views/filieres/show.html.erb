@@ -188,7 +188,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% if @filiere.lien_guide
   <h2>Coûts / tarifs <%= aide('tarifs')%></h2>
   <div class="ptt loud">  d'après données constructeurs, consulter l'aide !</div>
   <div class="notice">
-  coûts annuels moyens : <%= number_to_currency(@filiere.cout_annuel) %> TTC<br/>
+<!--  coûts annuels moyens : <%= number_to_currency(@filiere.cout_annuel) %> TTC<br/> -->
   coûts totaux sur 15 ans : entre <strong><%= number_to_currency(@filiere.cout_15ans_min) %></strong> et <strong><%= number_to_currency(@filiere.cout_15ans_max) %></strong> TTC
   </div>
 
