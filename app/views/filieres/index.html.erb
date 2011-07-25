@@ -83,8 +83,8 @@
       <div class="tptt quiet">
         MàJ <%= l(filiere.updated_at) %>
       <% if can? :destroy, Filiere %>
-        <% if @filiere.updater_id %>
-      par <%= User.find_by_id(@filiere.updater_id).username %>
+        <% if filiere.updater_id %>
+      par <%= User.find_by_id(filiere.updater_id).username %>
         <%end%>
       <%end%>
       </div>
