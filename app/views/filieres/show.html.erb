@@ -99,7 +99,7 @@
     <% if @filiere.elec == true %>
     <h3><%= image_tag("lightning.png") %> Conso. électrique</h3>
       Puissance totale installée : <strong><%= @filiere.puiss_totale %> </strong>Watts <br/>
-      Consommation annuelle :<strong> <%= @filiere.conso_elect%> Wh/an</strong><br/>
+      Consommation annuelle :<strong> <%= @filiere.conso_elect%> KWh/an</strong><br/>
       Obs. : <%= @filiere.elect_obs %>
     <% else %>
     <h3>Pas de consommation électrique</h3> de la filière elle-même.
