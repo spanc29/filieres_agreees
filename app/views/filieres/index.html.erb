@@ -20,6 +20,7 @@
   </fieldset>
 </div>
 
+
 <div class="container noprint">
 <div class="span-24 ptt bottom">
   filières affichées : <%= @filieres.count %> / <%= Filiere.count %>, tri par n° agrément
@@ -81,6 +82,11 @@
       <%end%>
       <div class="tptt quiet">
         MàJ <%= l(filiere.updated_at) %>
+      <% if can? :destroy, Filiere %>
+        <% if @filiere.updater_id %>
+      par <%= User.find_by_id(@filiere.updater_id).username %>
+        <%end%>
+      <%end%>
       </div>
   </div>
   </div>
