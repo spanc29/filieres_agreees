@@ -94,7 +94,7 @@
         </tr>
       </tbody>
     </table>
-    Abbattement bactériologique : <% if @filiere.logbacter %> <strong><%= @filiere.logbacter %></strong> LOG <% else %> Inconnu <%end%>
+    Abattement bactériologique : <% if @filiere.logbacter %> <strong><%= @filiere.logbacter %></strong> LOG <% else %> Inconnu <%end%>
 
     <% if @filiere.elec == true %>
     <h3><%= image_tag("lightning.png") %> Conso. électrique</h3>
@@ -117,7 +117,7 @@
 <div class="container">
 <h2>conditions de pose <%= aide("pose")%></h2>
 <div class="info">
-d'après : <strong><%= @filiere.guide_pose %></strong> <% if @filiere.lien_guide_pose %> (<%= link_to 'charger', @filiere.lien_guide_pose, :target => "_blank" %>) <%end%></div>
+d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_guide_pose.empty? %> (<%= link_to 'charger', @filiere.lien_guide_pose, :target => "_blank" %>) <%end%></div>
 
 <div class="span-8 box">
   <% @filiere.poses.each do |pose|%>
@@ -164,7 +164,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% if @filiere.lien_guide
         <th>opération</th>
         <th>élément</th>
         <th>réalisation</th>
-        <th>Coûts <br/>entre...</th>
+        <th>Coûts TTC</th>
         <th>observations</th>
         </tr>
         </thead>
@@ -174,7 +174,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% if @filiere.lien_guide
           <td><%= ent.eoperation %></td>
           <td><%= ent.eouvrage %></td>
           <td><%= ent.erealisation %></td>
-          <td><%= ent.ecout_min %> et <%= ent.ecout_max %> €</td>
+          <td><% if ent.ecout_min %> <%= number_to_currency(ent.ecout_min) %><%end%> <% if ent.ecout_max %> à <%= number_to_currency(ent.ecout_max)%> <%end%></td>
           <td><%= ent.eobservat %></td>
         </tr>
         <%end %>
@@ -198,8 +198,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% if @filiere.lien_guide
         <tr>
         <th>Poste de dépense</th>
         <th>sur une période de </th>
-        <th>Entre (€ ttc)</th>
-        <th>et (€ ttc)</th>
+        <th>montant (€ ttc)</th>
         <th>observations</th>
         </tr>
         </thead>
@@ -207,8 +206,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% if @filiere.lien_guide
         <tr>
           <td><%= ct.poste %></td>
           <td><%= ct.duree %></td>
-          <td><%= number_to_currency(ct.cout_min) %></td>
-          <td><%= number_to_currency(ct.cout_max) %></td>
+          <td><%= number_to_currency(ct.cout_min) %> <% if ct.cout_max %> à <%= number_to_currency(ct.cout_max) %><%end%></td>
           <td><%= ct.obs %></td>
         </tr>
         <%end %>
