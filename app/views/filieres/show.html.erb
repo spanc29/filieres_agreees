@@ -156,6 +156,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
 <div class="container">
   <div class="span-24">
     <h2>Entretien <%= aide('entretien')%></h2>
+    <div class="ptt">ATTENTION : entretien indiqué par constructeur, consulter l'aide !</div>
     <table>
       <tbody>
         <thead>
@@ -186,10 +187,11 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
 <!-- couts -->
 <div class="container">
   <h2>Coûts / tarifs <%= aide('tarifs')%></h2>
-  <div class="ptt loud">  d'après données constructeurs, consulter l'aide !</div>
+  <div class="ptt loud"> Coûts et détails indiquées par constructeur, consulter l'aide !</div>
   <div class="notice">
 <!--  coûts annuels moyens : <%= number_to_currency(@filiere.cout_annuel) %> TTC<br/> -->
-  coûts totaux sur 15 ans : entre <strong><%= number_to_currency(@filiere.cout_15ans_min) %></strong> et <strong><%= number_to_currency(@filiere.cout_15ans_max) %></strong> TTC
+  coûts totaux sur 15 ans : <strong><%= number_to_currency(@filiere.cout_15ans_min) %></strong>
+  <% if @filiere.cout_15ans_max %> à <strong><%= number_to_currency(@filiere.cout_15ans_max) %></strong><%end%> TTC
   </div>
 
   <table>
