@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110718210235) do
+ActiveRecord::Schema.define(:version => 20110803141808) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(:version => 20110718210235) do
     t.integer  "updater_id"
     t.integer  "puiss_totale"
     t.string   "elect_obs"
+    t.boolean  "saisie"
   end
 
   create_table "poses", :force => true do |t|

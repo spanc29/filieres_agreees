@@ -7,6 +7,11 @@
   </div>
 
 <!-- titre -->
+      <% if @filiere.saisie %>
+        <div class="error">
+          FICHE NON COMPLETE - SAISIE EN COURS
+        </div>
+      <%end%>
 <h1>  <%= @filiere.num_agrement %> / <%= @filiere.denomination_commerciale %></h1>
     <div class="span-8">
       <p>Titulaire : <strong><%= @filiere.titulaire %></strong></p>
@@ -214,4 +219,9 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
         <%end %>
       </tbody>
     </table>
+          <% if @filiere.saisie %>
+        <div class="error">
+          FICHE NON COMPLETE - SAISIE EN COURS
+        </div>
+      <%end%>
 </div>

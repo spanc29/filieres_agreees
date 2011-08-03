@@ -86,6 +86,12 @@
         <% if filiere.updater_id %>
       par <%= User.find_by_id(filiere.updater_id).username %>
         <%end%>
+      <br/>
+      <% if filiere.saisie %>
+        <div class="error">
+          FICHE NON COMPLETE - SAISIE EN COURS
+        </div>
+      <%end%>
       <%end%>
       </div>
   </div>

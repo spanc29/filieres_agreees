@@ -14,6 +14,7 @@
   <%= f.input :lien_legifrance %><br/>
   <%= f.input :photo %><br/>
 
+
   <h3>descriptions</h3>
   <%= f.input :type_filiere, :collection =>["culture fixée","culture libre","massif filtrant","phytoépuration","cult.libre + filtration"] %><br/>
   <%= f.input :description_sommaire %><br/>
@@ -76,6 +77,9 @@
   <%= link_to_add_fields('Ajouter une dépense', f, :couts) %></div>
   </div>
 
-<%= f.submit%>
+  <%= f.input :saisie, :label =>"Saisie en cours" %><br/>
+  <br/>
+<%= f.submit %>
+
 <%end%>
 </div>
