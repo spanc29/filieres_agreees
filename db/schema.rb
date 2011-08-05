@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110803141808) do
+ActiveRecord::Schema.define(:version => 20110805192552) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(:version => 20110803141808) do
     t.integer  "puiss_totale"
     t.string   "elect_obs"
     t.boolean  "saisie"
+    t.integer  "demarrage"
   end
 
   create_table "poses", :force => true do |t|

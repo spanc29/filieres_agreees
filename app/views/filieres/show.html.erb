@@ -109,7 +109,13 @@
     <% else %>
     <h3>Pas de consommation électrique</h3> de la filière elle-même.
     <%end%>
+    <hr/>
+    Période de démarrage (semaines) : <%= @filiere.demarrage %>
+
+
   </div>
+
+
   <div class="span-12 last">
   <h3>techniques</h3>
     <% @filiere.techniques.each do |tec|%>
