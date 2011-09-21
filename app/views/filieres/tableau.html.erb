@@ -1,0 +1,46 @@
+<% title "Coûts sur 15 ans" %>
+
+<div class="container">
+<div class="noprint">
+    <div class="clearfix">
+    <%= link_to "retour à la liste", filieres_path, :class => "button" %>
+    </div>
+
+  <fieldset>
+    <legend>Coûts sur 15 ans des filières <%= aide("")%> </legend>
+
+    Coûts à 15 ans fournis par les constructeurs dans les guides ou manuels officiels.
+
+
+  </fieldset>
+</div>
+
+  <div class="ptt"> pour voir la fiche - cliquer sur le n° agrément</div>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= sort_link @q, :num_agrement, 'n° agrément'%> </th>
+      <th>dénomination commerciale</th>
+      <th><%= sort_link @q, :type_filiere, 'type filière'%></th>
+      <th><%= sort_link @q, :cout_15ans_min, 'coût min sur 15 ans'%></th>
+      <th><%= sort_link @q, :cout_15ans_max, 'coût max sur 15 ans'%></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @filieres.each do |fil|%>
+    <tr>
+
+      <td><%= link_to (fil.num_agrement),fil %></td>
+      <td><%=fil.denomination_commerciale %></td>
+      <td><%=fil.type_filiere %></td>
+      <td><% if fil.cout_15ans_min %>
+              <%=number_to_currency(fil.cout_15ans_min) %>
+              <% else %>
+              <%= link_to "Aidez-moi", '/don.html', :title => "FAIRE UN DON" %><br/>
+          <%end%></td>
+      <td><%=number_to_currency(fil.cout_15ans_max) %></td>
+    </tr>
+  <%end %>
+  </tbody>
+</table>

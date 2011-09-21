@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1.0'
 
 gem 'pg'
 
@@ -11,7 +11,7 @@ gem 'jquery-rails'
 gem 'ransack'
 gem 'squeel'
 gem 'userstamp'
-
+gem 'deep_cloneable'
 
 gem "mocha", :group => :test
 gem "bcrypt-ruby", :require => "bcrypt"

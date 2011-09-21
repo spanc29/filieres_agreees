@@ -2,14 +2,18 @@ class FilieresController < ApplicationController
 
   def index
   @q = Filiere.search(params[:q])
-  @fili = @q.result(:distinct => false)
-  @filieres = @fili.order("num_agrement ASC")
+  @filieres = @q.result(:distinct => false)
   end
 
   def comparo
     @filieres = Filiere.all
     @filier1 = Filiere.find_by_num_agrement(params[:id1])
     @filier2 = Filiere.find_by_num_agrement(params[:id2])
+  end
+
+  def tableau
+    @q = Filiere.search(params[:q])
+    @filieres = @q.result(:distinct => false)
   end
 
   def show

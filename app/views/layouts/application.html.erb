@@ -37,6 +37,7 @@
       <div id="nav">
         <ul>
           <li><%= link_to "COMPARATEUR", comparo_path, :class => "button", :title => "comparer 2 filières" %></li>
+          <li><%= link_to "SUR 15 ANS", tableau_path, :class => "button", :title => "tableau des coûts" %></li>
           <li><%= link_to "EXPLICATIONS", '/aide.html', :class => "button", :title => "explications et aide" %><li>
           <li><%= link_to "AVERTISSEMENT", "/disclaimer.html", :class => "button negative" %></li>
           <li><% if can? :create, Filiere %>

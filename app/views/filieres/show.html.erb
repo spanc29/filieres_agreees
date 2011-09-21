@@ -16,7 +16,7 @@
     <div class="span-8">
       <p>Titulaire : <strong><%= @filiere.titulaire %></strong></p>
       Adresse : <address><%= simple_format(@filiere.adresse) %></address>
-      <p> <%= sanitize(auto_link(@filiere.site_web)) %> </p>
+      <p> <%= sanitize(link_to(@filiere.site_web)) %> </p>
       <p><strong><%= mail_to(@filiere.email) %></strong></p>
     </div>
     <div class="span-8">
@@ -110,7 +110,7 @@
     <h3>Pas de consommation électrique</h3> de la filière elle-même.
     <%end%>
     <hr/>
-    Période de démarrage (semaines) : <%= @filiere.demarrage %>
+    Phase de démarrage ou redémarrage : <strong><%= @filiere.demarrage %> semaines</strong>
 
 
   </div>

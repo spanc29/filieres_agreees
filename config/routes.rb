@@ -9,6 +9,7 @@ AGREEES::Application.routes.draw do
   match 'login' => 'sessions#new', :as => :login
 
   match 'comparo' => 'filieres#comparo', :as => :comparo
+  match 'tableau' => 'filieres#tableau', :as => :tableau
 
   resources :sessions
 
