@@ -16,6 +16,11 @@ class FilieresController < ApplicationController
     @filieres = @q.result(:distinct => false)
   end
 
+  def tablperf
+    @q = Filiere.search(params[:q])
+    @filieres = @q.result(:distinct => false)
+  end
+
   def show
     @filiere = Filiere.find(params[:id])
   end

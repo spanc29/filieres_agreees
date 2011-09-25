@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110805192552) do
+ActiveRecord::Schema.define(:version => 20110923192238) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20110805192552) do
     t.boolean  "intermittence"
     t.boolean  "avec_nappe"
     t.boolean  "test_bacterio"
-    t.string   "ref_guide_util"
+    t.text     "ref_guide_util"
     t.string   "site_web"
     t.integer  "pourcent_vidange"
     t.string   "ouvrage_vidange"
@@ -61,16 +61,13 @@ ActiveRecord::Schema.define(:version => 20110805192552) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo"
-    t.string   "mes"
-    t.string   "dbo5"
-    t.string   "dco"
     t.integer  "PCdoc"
     t.integer  "PCdbo"
     t.integer  "PCmes"
     t.integer  "logbacter"
     t.boolean  "sortie_basse"
     t.boolean  "elec"
-    t.string   "guide_pose"
+    t.text     "guide_pose"
     t.integer  "conso_elect"
     t.integer  "cout_annuel"
     t.integer  "cout_15ans_min"
@@ -85,6 +82,9 @@ ActiveRecord::Schema.define(:version => 20110805192552) do
     t.string   "elect_obs"
     t.boolean  "saisie"
     t.integer  "demarrage"
+    t.float    "dbo5"
+    t.float    "mes"
+    t.float    "dco"
   end
 
   create_table "poses", :force => true do |t|

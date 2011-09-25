@@ -1,0 +1,50 @@
+<% title "Performances" %>
+
+<div class="container">
+<div class="noprint">
+    <div class="clearfix">
+    <%= link_to "retour à la liste", filieres_path, :class => "button" %>
+    </div>
+
+  <fieldset>
+    <legend>Performances des filières <%= aide("")%> </legend>
+
+    Performances fournies par les constructeurs dans les guides ou manuels officiels.
+
+
+  </fieldset>
+</div>
+
+  <div class="ptt"> pour voir la fiche - cliquer sur le n° agrément</div>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= sort_link @q, :num_agrement, 'n° agrément'%> </th>
+      <th>dénomination commerciale</th>
+      <th><%= sort_link @q, :type_filiere, 'type filière'%></th>
+      <th><%= sort_link @q, :dbo5, 'DBO5'%></th>
+      <th><%= sort_link @q, :dco, 'DCO'%></th>
+      <th><%= sort_link @q, :mes, 'MES'%></th>
+      <th><%= sort_link @q, :logbacter, 'bacterio LOG'%></th>
+
+    </tr>
+  </thead>
+  <tbody>
+  <% @filieres.each do |fil|%>
+    <tr>
+      <td><%= link_to (fil.num_agrement),fil %></td>
+      <td><%=fil.denomination_commerciale %></td>
+      <td><%=fil.type_filiere %></td>
+      <td><% if fil.dbo5 %>
+              <%=fil.dbo5 %> (<%= fil.PCdbo %> % )
+              <% else %>
+              <%= link_to "Aidez-moi", '/don.html', :title => "FAIRE UN DON" %><br/>
+          <%end%></td>
+      <td><%=fil.dco %> ( <%= fil.PCdoc %> %)</td>
+      <td><%=fil.mes %> ( <%= fil.PCmes %> %)</td>
+      <td><%=fil.logbacter %></td>
+    </tr>
+  <%end %>
+  </tbody>
+</table>

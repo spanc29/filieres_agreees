@@ -2,7 +2,12 @@ body {background-color: #E6E6FA;font-size: 14px;}
 
 .center {text-align: center;}
 ul {margin:0;padding:0;}
-#nav li, #nav li.current {float:left;list-style-type:none;margin: 0px 2px 0px 0px;padding: 0px 0px 0px 0px;white-space:nowrap;}
+
+.nav {
+  display: box;
+
+}
+.nav li, .nav li.current {float:left;list-style-type:none;margin: 0px 2px 0px 0px;padding: 0px 0px 0px 0px;white-space:nowrap;}
 
 .menu {
 background-color: #FFFFFF;}

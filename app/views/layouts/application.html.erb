@@ -34,18 +34,29 @@
           <em>Sapere aude !</em>
       </div>
       <h1>FILIERES AGREEES (béta)</h1>
-      <div id="nav">
+      <div class="container noprint">
+      <div class="nav">
         <ul>
-          <li><%= link_to "COMPARATEUR", comparo_path, :class => "button", :title => "comparer 2 filières" %></li>
-          <li><%= link_to "SUR 15 ANS", tableau_path, :class => "button", :title => "tableau des coûts" %></li>
-          <li><%= link_to "EXPLICATIONS", '/aide.html', :class => "button", :title => "explications et aide" %><li>
+          <li><%= link_to "EXPLICATIONS", '/aide.html', :class => "button", :title => "explications et aide" %></li>
           <li><%= link_to "AVERTISSEMENT", "/disclaimer.html", :class => "button negative" %></li>
+        </ul>
+      </div>
+      </div>
+      <div class="container noprint">
+
+      <div class="nav">
+        <ul>
           <li><% if can? :create, Filiere %>
             <%= link_to "Nouvelle Filiere", new_filiere_path, :class => "button" %>
           <%end%></li>
+          <li><span class="button"> comparer : </span></li>
+          <li><%= link_to "2 FILIERES", comparo_path, :class => "button", :title => "comparer 2 filières" %></li>
+          <li><%= link_to "Coûts 15 ans", tableau_path, :class => "button", :title => "tableau des coûts" %></li>
+          <li><%= link_to "Performances", tablperf_path, :class => "button", :title => "tableau des performances" %></li>
         </ul>
       </div>
-  </div>
+    </div>
+    </div>
 
       <% flash.each do |name, msg| %>
         <div class="container">

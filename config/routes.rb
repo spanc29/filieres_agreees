@@ -10,6 +10,7 @@ AGREEES::Application.routes.draw do
 
   match 'comparo' => 'filieres#comparo', :as => :comparo
   match 'tableau' => 'filieres#tableau', :as => :tableau
+  match 'tablperf' => 'filieres#tablperf', :as => :tablperf
 
   resources :sessions
 
