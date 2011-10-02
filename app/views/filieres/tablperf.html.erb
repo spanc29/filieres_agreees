@@ -34,7 +34,10 @@
   <% @filieres.each do |fil|%>
     <tr>
       <td><%= link_to (fil.num_agrement),fil %></td>
-      <td><%=fil.denomination_commerciale %></td>
+      <td><%=fil.denomination_commerciale %>
+      <% if fil.saisie %>
+        <%= image_tag("inbox.png", :title => "Fiche incompléte par ailleurs") %>
+      <%end%></td>
       <td><%=fil.type_filiere %></td>
       <td><% if fil.dbo5 %>
               <%=fil.dbo5 %> (<%= fil.PCdbo %> % )
