@@ -8,7 +8,7 @@
     <%= f.label(:num_agrement_or_titulaire_or_denomination_commerciale_cont, "N° agr.ou marque :") %><%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_cont, :size => "15" %>
     <%= f.label(:type_filiere_cont,"type de filière :") %> <%= f.select :type_filiere_cont, ["","culture fixée","culture libre","massif filtrant","phytoépuration","cult.libre + filtration"] %>
   <br/>
-    Eq.hab. <%= f.search_field :eq_hab_cont, :size => "3"%><span class="ptt quiet"> veuillez mettre votre nombre entre "". Exemple : "2" pour chercher 2 eq.hab </span>
+    Eq.hab. <%= f.search_field :eq_hab_cont, :size => "3" %><span class="ptt quiet"> veuillez mettre votre nombre entre "". Exemple : "2" pour chercher 2 eq.hab </span>
   <br/>
      <%= f.check_box :intermittence_true %>Interm |
      <%= f.check_box :avec_nappe_true %>Pose Nappe |
@@ -28,72 +28,4 @@
   </div>
 </div>
 
-<% @filieres.each do |filiere|%>
-  <div class="container box outline">
-
-  <div class="span-24">
-    <h2>
-      <%= link_to (filiere.num_agrement)+" / "+( filiere.denomination_commerciale),filiere %>
-    </h2>
-  </div>
-  <div class="span-24">
-
-      <div class="outthin center">
-        <% if filiere.eq_hab %>
-        Eq.Hab. :<% filiere.eq_hab.each do |eq|%>
-          <% if eq.empty? %>
-          -
-          <% else %>
-          <%= image_tag (eq+".png") %>
-          <%end%>
-        <%end %>
-        <%end%>
-        </div>
-  </div>
-  <div class="span-6 border">
-    <%= filiere.titulaire %><br/>
-   <address><%= simple_format(filiere.adresse) %></address>
-    <div>
-    <%= link_to(filiere.site_web, filiere.site_web, :target => "_blank") %><br/>
-    <%= mail_to(filiere.email) %></div>
-  </div>
-  <div class="span-6 border">
-    <strong><%= filiere.type_filiere %></strong><br/>
-    <div class="small"><%= filiere.description_sommaire %></div>
-
-  </div>
-  <div class="span-6 border">
-      <div class="ptt">
-      <%= img_boolean(filiere.intermittence,'intermittence') %> intermittence <br/>
-      <%= img_boolean(filiere.avec_nappe,'pose en nappe') %> pose en nappe<br/>
-      <%= img_boolean(filiere.test_bacterio,'test bacterio') %> Bactério testée<br/>
-      <% if filiere.elec == true %>
-        <%=image_tag("lightning.png") %> Conso. Electricité <%end%><br/>
-      <% if filiere.sortie_basse == true %>
-        <%=image_tag("arrow-270.png") %> sortie basse <%end%><br/>
-      Vidange : <%= filiere.ouvrage_vidange %> à <%= filiere.pourcent_vidange %> % <br/>
-      Agréée le <%= l(filiere.date_JO) %> (JORF n°<%= filiere.num_avis_jo %>) par <%= filiere.organisme_test %></div>
-  </div>
-
-  <div class="span-6 last">
-      <% unless filiere.photo.empty? %>
-      <%= image_tag(filiere.photo, :size => "100x100", :alt => "photo", :class =>"class") %>
-      <% else %>
-      <%= image_tag("noimage.png", :size => "100x100", :alt => "pas de photo") %>
-      <%end%>
-      <div class="tptt quiet">
-        MàJ, il y a <%= distance_of_time_in_words(Time.now, filiere.updated_at) %>
-      <% if can? :destroy, Filiere %>
-        <% if filiere.updater_id %>
-      par <%= User.find_by_id(filiere.updater_id).username %>
-        <%end%>
-      <%end%><br/>
-      <% if filiere.saisie %>
-        <div class="error">
-          FICHE NON COMPLETE - SAISIE EN COURS
-      </div>
-      <%end%>
-      </div>
-  </div>
-  </div>
-<%end %>
+<%= render 'resume' %>

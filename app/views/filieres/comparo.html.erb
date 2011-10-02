@@ -10,7 +10,7 @@
     <legend>Comparaison technique <%= aide("comparo")%> </legend>
   <%= form_tag(:comparo, :method => "get") do %>
     <%= label_tag(:id1, "Choisir : ") %>
-    <%= select_tag :id1, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement") %>
+    <%= select_tag :id1, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement" ) %>
     <%= select_tag :id2, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement") %>
     <%= submit_tag("comparer") %>
   <% end %>

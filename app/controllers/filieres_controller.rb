@@ -6,7 +6,7 @@ class FilieresController < ApplicationController
   end
 
   def comparo
-    @filieres = Filiere.all
+    @filieres = Filiere.all(:order => "num_agrement ASC")
     @filier1 = Filiere.find_by_num_agrement(params[:id1])
     @filier2 = Filiere.find_by_num_agrement(params[:id2])
   end
