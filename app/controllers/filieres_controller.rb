@@ -31,6 +31,7 @@ class FilieresController < ApplicationController
             @filiere.entretiens.build
             @filiere.poses.build
             @filiere.couts.build
+            @filiere.photos.build
   end
 
   def create

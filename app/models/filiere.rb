@@ -10,6 +10,8 @@ class Filiere < ActiveRecord::Base
   accepts_nested_attributes_for :poses, :allow_destroy => true
   has_many :couts
   accepts_nested_attributes_for :couts, :allow_destroy => true
+  has_many :photos
+  accepts_nested_attributes_for :photos, :allow_destroy => true
 
   serialize :eq_hab
 

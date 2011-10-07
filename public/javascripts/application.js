@@ -10,3 +10,11 @@ function add_fields(link, association, content) {
     var regexp = new RegExp("new_" + association, "g");
       $(link).parent().before(content.replace(regexp, new_id));
 }
+
+
+$(function() {
+        $('a.zoombox').zoombox({
+        theme       : 'zoombox',        //available themes : zoombox,lightbox, prettyphoto, darkprettyphoto, simple
+        gallery     : true,             // Allow gallery thumb view
+    });
+});

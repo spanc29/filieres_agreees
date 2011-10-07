@@ -46,11 +46,12 @@
   </div>
 
   <div class="span-6 last">
-      <% unless filiere.photo.empty? %>
-      <%= image_tag(filiere.photo, :size => "100x100", :alt => "photo", :class =>"class") %>
+      <% if filiere.photos.any? %>
+      <%= image_tag Photo.find(:first, :conditions => [ "filiere_id = ?", filiere.id]).photo_name, :size => "100x100", :alt => "photo" %>
       <% else %>
       <%= image_tag("noimage.png", :size => "100x100", :alt => "pas de photo") %>
       <%end%>
+
       <div class="tptt quiet">
         MàJ, il y a <%= distance_of_time_in_words(Time.now, filiere.updated_at) %>
       <% if can? :destroy, Filiere %>

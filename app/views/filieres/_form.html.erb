@@ -12,6 +12,16 @@
   <%= f.input :date_JO, :as => :date %><br/>
   <%= f.input :texte_NOR_jo %><br/>
   <%= f.input :lien_legifrance %><br/>
+
+  <h3>photos</h3>
+  <div>
+  <%= f.simple_fields_for :photos do |builder| %>
+    <%= render "photos/form", :f => builder %>
+  <% end %>
+  <div class="center clearfix">
+  <%= link_to_add_fields('Ajouter une photo', f, :photos) %></div>
+  </div>
+
   <%= f.input :photo %><br/>
 
 

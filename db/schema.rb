@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110923192238) do
+ActiveRecord::Schema.define(:version => 20111007200623) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -85,6 +85,12 @@ ActiveRecord::Schema.define(:version => 20110923192238) do
     t.float    "dbo5"
     t.float    "mes"
     t.float    "dco"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.string  "photo_name"
+    t.string  "legende"
+    t.integer "filiere_id"
   end
 
   create_table "poses", :force => true do |t|

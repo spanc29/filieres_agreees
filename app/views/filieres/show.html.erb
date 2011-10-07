@@ -16,7 +16,7 @@
     <div class="span-8">
       <p>Titulaire : <strong><%= @filiere.titulaire %></strong></p>
       Adresse : <address><%= simple_format(@filiere.adresse) %></address>
-      <p> <%= sanitize(link_to(@filiere.site_web)) %> </p>
+      <p> <%= link_to @filiere.site_web %> </p>
       <p><strong><%= mail_to(@filiere.email) %></strong></p>
     </div>
     <div class="span-8">
@@ -32,8 +32,11 @@
       </p>
     </div>
     <div class="span-8 last">
+      <p class="ptt quiet">galerie d'images : </p>
       <% unless @filiere.photo.empty? %>
-      <%= image_tag(@filiere.photo, :width => '250', :alt => "photo filiere") %>
+      <% @filiere.photos.each do |photo|%>
+        <%= link_to image_tag(photo.photo_name, :width => '75', :alt => "photo filiere"), photo.photo_name, :class=>"zoombox zgallery1" %>
+        <%end%>
       <% else %>
       <%= image_tag("noimage.png", :width => '250', :alt => "pas de photo") %>
       <%end%>
