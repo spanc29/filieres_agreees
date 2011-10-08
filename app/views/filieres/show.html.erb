@@ -35,7 +35,7 @@
       <p class="ptt quiet">galerie d'images : </p>
       <% unless @filiere.photo.empty? %>
       <% @filiere.photos.each do |photo|%>
-        <%= link_to image_tag(photo.photo_name, :width => '75', :alt => "photo filiere"), photo.photo_name, :class=>"zoombox zgallery1" %>
+        <%= link_to image_tag(photo.photo_name, :width => '75', :title => photo.legende), photo.photo_name, :class=>"zoombox zgallery1" %>
         <%end%>
       <% else %>
       <%= image_tag("noimage.png", :width => '250', :alt => "pas de photo") %>
