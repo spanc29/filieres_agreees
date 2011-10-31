@@ -31,7 +31,7 @@ end
 
 def saisie(den="filiere")
   if den.saisie
-        image_tag("page_error.png", :title => "Fiche incompléte par ailleurs")
+        image_tag("page_error.png", :title => "Fiche non totalement remplie")
   end
 end
 end
