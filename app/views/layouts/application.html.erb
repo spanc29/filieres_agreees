@@ -3,9 +3,8 @@
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
     <%= stylesheet_link_tag 'screen.css','application.css', :media => 'screen, projection' %>
-    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Cherry+Cream+Soda&v1', :media => 'screen, projection' %>
+    <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Arvo', :media => 'screen, projection' %>
     <%= stylesheet_link_tag '/javascripts/zoombox/zoombox.css', :media => 'screen, projection' %>
-    <%= stylesheet_link_tag 'plugins/buttons/screen.css', :media => 'screen, projection' %>
     <%= stylesheet_link_tag 'print.css', :media => 'print' %>
     <%= javascript_include_tag "http://code.jquery.com/jquery-1.6.1.min.js","application","rails", "zoombox/zoombox.js" %>
     <%= csrf_meta_tag %>
@@ -26,57 +25,65 @@
 
   </head>
   <body>
-  <div class="page box container noprint">
-      <div class="menu right">
-          <a href="http://www.spanc29.net">Un service de spanc29.net</a><br/>
-          <a href="http://www.assainissement-non-collectif.developpement-durable.gouv.fr/article.php3?id_article=185"> site officiel du ministère</a><br/>
-          <%= link_to "Pour que ce site reste sans pub", '/don.html', :title => "FAIRE UN DON" %><br/>
-          <em>Sapere aude !</em>
-      </div>
-      <h1>FILIERES AGREEES v11.10</h1>
+  <div id="background"></div>
+  <div class="container">
 
-      <div class="container noprint">
-      <div class="nav">
-        <ul>
-          <li><%= link_to "EXPLICATIONS", '/aide.html', :class => "button", :title => "explications et aide" %></li>
-          <li><%= link_to "AVERTISSEMENT", "/disclaimer.html", :class => "button negative" %></li>
-        </ul>
-      </div>
-      </div>
-      <div class="container noprint">
+  <div id="header">
+  <h1>
+    <a href="/"> FILIERES</a>
+  </h1>
+  <div class="navigation">
+      <ul class="global">
+      <li><a href="http://www.spanc29.net">Un service de spanc29.net</a></li>
+      <li><a href="http://www.assainissement-non-collectif.developpement-durable.gouv.fr/article.php3?id_article=185"> site officiel du ministère</a></li>
+      <li><a title="indice : KANT">Sapere aude !</a></li>
+      <li>
+        <% if current_user %>
+          <%= link_to "logout", logout_path, :class =>"header-button" %>
+        <% else %>
+          <%= link_to "login", login_path, :class =>"header-button" %>
+        <%end%>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
 
-      <div class="nav">
-        <ul>
-          <li><% if can? :create, Filiere %>
-            <%= link_to "Nouvelle Filiere", new_filiere_path, :class => "button" %>
-          <%end%></li>
-          <li><span class="button"> comparer : </span></li>
-          <li><%= link_to "2 FILIERES", comparo_path, :class => "button", :title => "comparer 2 filières" %></li>
-          <li><%= link_to "Coûts 15 ans", tableau_path, :class => "button", :title => "tableau des coûts" %></li>
-          <li><%= link_to "Performances", tablperf_path, :class => "button", :title => "tableau des performances" %></li>
-        </ul>
+<div class="conthead noprint">
+  <%= link_to "EXPLICATIONS", '/aide.html', :class => "header-button", :title => "explications et aide" %>
+  <%= link_to "AVERTISSEMENT", "/disclaimer.html", :class => "header-button" %>
+  <%= link_to "SITE SANS PUB !", '/don.html', :title => "FAIRE UN DON", :class => "header-button" %>
+  <% if can? :create, Filiere %>
+            <%= link_to "Nouvelle Filiere", new_filiere_path, :class => "header-button" %>
+          <%end%>
+</div>
+
+
+
+
+<div class="conthead noprint">
+
+      <div class=""><span class="ptt"> comparer :</span>
+          <%= link_to "2 FILIERES", comparo_path, :class => "header-button", :title => "comparer 2 filières" %>
+          <%= link_to "Coûts 15 ans", tableau_path, :class => "header-button", :title => "tableau des coûts" %>
+          <%= link_to "Performances", tablperf_path, :class => "header-button", :title => "tableau des performances" %>
       </div>
-    </div>
-    </div>
+</div>
+
+
 
       <% flash.each do |name, msg| %>
         <div class="container">
-        <%= content_tag :div, msg, :id => "flash_#{name}" %></div>
+        <%= content_tag :div, msg, :id => "flash_#{name}" %>
+        </div>
       <% end %>
       <%= yield %>
 
-    <footer>
-      <div class="footer container box center">
-        <div class="small quiet">
+    <div id="footer">
+        <div class="center">
           Veuillez lire l'avertissement - Les marques et logo appartiennent à leur propriétaire respectif. photo et visuel non contractuel. <br/>
           Tarifs et informations sont donnés à titre indicatif non contractuel, sous toutes réserves de modifications. Seules les données officielles ou des constructeurs font foi.
         </div>
-        <% if current_user %>
-        <%= link_to "logout", logout_path %>
-        <% else %>
-        <%= link_to "login", login_path %>
-        <%end%>
-      </div>
-    </footer>
+    </div>
 </body>
 </html>

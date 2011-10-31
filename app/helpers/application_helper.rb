@@ -28,4 +28,10 @@ def aide(ancre=nil)
   end
     link_to image_tag("help.png", :alt =>"aide", :title =>"voir l'aide"), lien, :target => "_blank"
 end
+
+def saisie(den="filiere")
+  if den.saisie
+        image_tag("page_error.png", :title => "Fiche incompléte par ailleurs")
+  end
+end
 end

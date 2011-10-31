@@ -1,4 +1,4 @@
-<div class="container">
+
 <%= simple_form_for @filiere do |f|%>
   <h3>Généralités</h3>
   <%= f.input :num_agrement %><br/>
@@ -22,9 +22,6 @@
   <%= link_to_add_fields('Ajouter une photo', f, :photos) %></div>
   </div>
 
-  <%= f.input :photo %><br/>
-
-
   <h3>descriptions</h3>
   <%= f.input :type_filiere, :collection =>["culture fixée","culture libre","massif filtrant","phytoépuration","cult.libre + filtration"] %><br/>
   <%= f.input :description_sommaire %><br/>
@@ -36,32 +33,38 @@
   <%= f.input :avec_nappe %>
   <%= f.input :test_bacterio %>
   <%= f.input :elec %>
-  <%= f.input :sortie_basse %></div>
+  <%= f.input :sortie_basse %>
+  </div>
   <%= f.input :ref_guide_util%><br/>
-
-  <h3>performances</h3>
-  <div><%= f.input :mes %> mg/L / <%= f.input :PCmes, :label => false %> %</div>
-  <div><%= f.input :dbo5 %> mg/L / <%= f.input :PCdbo, :label => false %> %</div>
-  <div><%= f.input :dco %> mg/L / <%= f.input :PCdoc, :label => false %> %</div>
-  <div><%= f.input :logbacter, :label => "abatt. bacterio" %> LOG </div>
-
-  <%= f.input :pourcent_vidange, :collection=> 10..80 %><br/>
+  <%= f.input :pourcent_vidange, :collection=> [30,50] %><br/>
   <%= f.input :ouvrage_vidange %><br/>
   <%= f.input :periode_vidange %><br/>
+
+  <h3>performances</h3>
+  <%= f.input :mes %> mg/L / <%= f.input :PCmes, :label => false %> %<br/>
+  <%= f.input :dbo5 %> mg/L / <%= f.input :PCdbo, :label => false %> %
+  <div><%= f.input :dco %> mg/L / <%= f.input :PCdoc, :label => false %> %</div>
+  <div><%= f.input :logbacter, :label => "abatt. bacterio" %> LOG </div>
+<br/>
+
+  <h3>autres</h3>
   <%= f.input :demarrage %> en semaines<br/>
+  <%= f.input :bruit, :label=>"niveau sonore" %> en dB<br/>
+
+  <h3>electricité</h3>
+   <%= f.input :puiss_totale, :label => "puissance elect totale" %><br/>
+   <%= f.input :conso_elect, :label => "conso elect annuelle" %><br/>
+   <%= f.input :elect_obs, :label => "obs sur elect."  %><br/>
 
 
-  <h3>techniques</h3>
-  puissance elect totale <%= f.input :puiss_totale, :label => false %><br/>
-  conso elect annuelle <%= f.input :conso_elect, :label => false %><br/>
-  obs sur elect. <%= f.input :elect_obs, :label => false %><br/>
-  <div>
+  <h3>éléments</h3>
   <%= f.simple_fields_for :techniques do |builder| %>
     <%= render "techniques/form", :f => builder %>
   <% end %>
   <div class="center clearfix">
-  <%= link_to_add_fields('Ajouter un élèment', f, :techniques) %></div>
+  <%= link_to_add_fields('Ajouter un élèment', f, :techniques) %>
   </div>
+
 
   <h3>conditions de pose</h3>
   <%= f.input :guide_pose %><br/>
@@ -89,9 +92,9 @@
   <%= link_to_add_fields('Ajouter une dépense', f, :couts) %></div>
   </div>
 
+<hr/>
+<div class="center">
   <%= f.input :saisie, :label =>"Saisie en cours" %><br/>
-  <br/>
 <%= f.submit %>
-
-<%end%>
 </div>
+<%end%>

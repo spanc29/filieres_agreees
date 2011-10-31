@@ -1,0 +1,82 @@
+<% if fil%>
+<h2><%= fil.num_agrement %></h2>
+<h2><%= fil.denomination_commerciale %></h2>
+<table>
+  <tbody>
+    <tr>
+      <td class="small">constructeur</td>
+      <td><%= fil.titulaire %></td>
+    </tr>
+    <tr>
+      <td class="small">nb eq.hab mini</td>
+      <td><%= fil.eq_hab_mini%></td>
+    </tr>
+    <tr>
+      <td class="small">nb eq.hab max</td>
+      <td><strong><%= fil.eq_hab_max%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">intermittence</td>
+      <td><strong><%= fil.intermittence%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">pose en nappe</td>
+      <td><strong><%= fil.avec_nappe%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">test bactério</td>
+      <td><strong><%= fil.test_bacterio%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">nb eq.hab max</td>
+      <td><strong><%= fil.eq_hab_max%></strong></td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <caption><h3>techniques</h3></caption>
+  <tbody>
+    <% fil.techniques.each do |t|%>
+    <tr>
+      <td class="small">cuve</td>
+      <td><strong><%= t.nom_cuve%>/<%= t.type_cuve %></strong></td>
+    </tr>
+    <tr>
+      <td class="small">matériaux</td>
+      <td><strong><%= t.materiaux%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">hauteur x longueur x largeur (cm)</td>
+      <td><strong><%= t.hauteur%></strong> x <strong><%= t.longueur%></strong> x <strong><%= t.largeur%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">diff. entrée sortie (cm)</td>
+      <td><strong><%= t.diff_ent_sort %></strong></td>
+    </tr>
+    <tr>
+      <td class="small">Poids (kg)</td>
+      <td><strong><%= t.hauteur%></strong></td>
+    </tr>
+    <tr>
+      <td class="small">Puissance installée (en W)</td>
+      <td><strong><%= t.puiss_elect_total%></strong></td>
+    </tr>
+    <%end %>
+  </tbody>
+</table>
+
+<table>
+  <caption><h3>blabla</h3></caption>
+  <tbody>
+    <tr>
+      <td class="small">test bactério</td>
+      <td><strong><%= fil.test_bacterio%></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<%else%>
+  <h2>VIDE</h2>
+<%end%>

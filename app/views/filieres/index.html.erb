@@ -1,31 +1,38 @@
 <% title "Filieres" %>
 
 
-<div class="container noprint">
-  <fieldset>
-    <legend>Recherche rapide <%= aide("accueil")%></legend>
-  <%= search_form_for @q do |f|%>
-    <%= f.label(:num_agrement_or_titulaire_or_denomination_commerciale_cont, "N° agr.ou marque :") %><%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_cont, :size => "15" %>
-    <%= f.label(:type_filiere_cont,"type de filière :") %> <%= f.select :type_filiere_cont, ["","culture fixée","culture libre","massif filtrant","phytoépuration","cult.libre + filtration"] %>
-  <br/>
-    Eq.hab. <%= f.search_field :eq_hab_cont, :size => "3" %><span class="ptt quiet"> veuillez mettre votre nombre entre "". Exemple : "2" pour chercher 2 eq.hab </span>
-  <br/>
-     <%= f.check_box :intermittence_true %>Interm |
-     <%= f.check_box :avec_nappe_true %>Pose Nappe |
-     <%= f.check_box :sortie_basse_false %> Sortie haute |
-     <%= f.check_box :elec_false %> Pas d'élect.
-    <div class="right">
-    <%= f.submit "chercher"%> / <span class="ptt"> <%= link_to 'RAZ', root_path %></span></div>
-  <%end%>
-  </fieldset>
-</div>
+<div class="page">
+  <div id="switcher-content">
+    <div class="search">
+      <div class="grd fort" >Recherche rapide <%= aide("accueil")%></div>
+      <%= search_form_for @q do |f|%>
+      <%= f.label(:num_agrement_or_titulaire_or_denomination_commerciale_cont, "N° agr.ou marque :") %><%= f.search_field :num_agrement_or_titulaire_or_denomination_commerciale_cont, :size => "15" %>
+      <%= f.label(:type_filiere_cont,"type de filière :") %> <%= f.select :type_filiere_cont, ["","culture fixée","culture libre","massif filtrant","phytoépuration","cult.libre + filtration"] %>
+      <br/>
+      Eq.hab. <%= f.search_field :eq_hab_cont, :size => "3" %>
+      &nbsp;&nbsp;
+      <%= f.check_box :intermittence_true %>Intermit. |
+      <%= f.check_box :avec_nappe_true %>Pose en Nappe |
+      <%= f.check_box :sortie_basse_false %> Sortie haute |
+      <%= f.check_box :elec_false %> Pas d'élect.<br/>
+      
+      <span class="ptt quiet"> veuillez mettre votre nombre entre "". Exemple : "2" pour chercher 2 eq.hab </span>
 
 
-<div class="container noprint">
-<div class="span-24 ptt bottom">
-  filières affichées : <%= @filieres.count %> / <%= Filiere.count %>, tri par <%= sort_link @q, :num_agrement, 'n° agrément', :default_order => :desc %> - <%= sort_link @q, :date_JO, 'Date agrément'%> - <%= sort_link @q, :type_filiere, 'type_filiere'%> <br/>
+      <div class="right">
+      <%= f.submit "chercher"%> / <span class="ptt quiet"> <%= link_to 'RAZ', root_path %></span>
+      </div>
+      <%end%>
+
 
   </div>
+  <div class="box-shadow top"></div>
+  <div class="box-shadow center"></div>
+  <div class="box-shadow bottom"></div>
+</div>
+
+<div>
+      filières affichées : <%= @filieres.count %> / <%= Filiere.count %>, tri par <%= sort_link @q, :num_agrement, 'n° agrément', :default_order => :desc %> - <%= sort_link @q, :date_JO, 'Date agrément'%> - <%= sort_link @q, :type_filiere, 'type_filiere'%>
 </div>
 
 <%= render 'resume' %>

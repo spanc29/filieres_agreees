@@ -1,10 +1,13 @@
 <% if fil%>
 <h1><%=link_to (fil.num_agrement), fil%></h1>
-<h2><%= fil.denomination_commerciale %>
+<h2><%= fil.denomination_commerciale %></h2>
 <% if fil.saisie %>
-        <%= image_tag("inbox.png", :title => "Fiche incompléte par ailleurs") %>
+  <br/>
+  <div class="error">
+  FICHE NON COMPLETE - SAISIE EN COURS
+  </div>
 <%end%>
-</h2>
+
 <table>
   <tbody>
     <tr>

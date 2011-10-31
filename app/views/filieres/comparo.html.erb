@@ -2,63 +2,83 @@
 
 <div class="container">
 <div class="noprint">
+
     <div class="clearfix">
     <%= link_to "retour à la liste", filieres_path, :class => "button" %>
     </div>
 
-  <fieldset>
-    <legend>Comparaison technique <%= aide("comparo")%> </legend>
+<div id="switcher-content">
+    <div class="search">
+    <div class="grd fort">Comparaison technique <%= aide("comparo")%></div>
   <%= form_tag(:comparo, :method => "get") do %>
     <%= label_tag(:id1, "Choisir : ") %>
     <%= select_tag :id1, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement" ) %>
     <%= select_tag :id2, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement") %>
     <%= submit_tag("comparer") %>
   <% end %>
-  </fieldset>
+  </div>
+  </div>
 </div>
 
   <div class="ptt"> pour voir la fiche - cliquer sur le n° agrément</div>
-  <div class="span-12">
-    <% if @filier1%><%= render 'compar/list1', :fil => @filier1 %><%else%><h2>VIDE</h2><%end%>
-  </div>
-  <div class="span-12 last">
-    <% if @filier2%><%= render 'compar/list1', :fil => @filier2 %><%else%><h2>VIDE</h2><%end%>
+  <div id="bellebox" class="resume clearfix">
+    <div class="span-12 border">
+      <% if @filier1%><%= render 'compar/list1', :fil => @filier1 %><%else%><h2>VIDE</h2><%end%>
+    </div>
+    <div class="span-12 last">
+      <% if @filier2%><%= render 'compar/list1', :fil => @filier2 %><%else%><h2>VIDE</h2><%end%>
+    </div>
   </div>
 
-  <div class="span-12">
+ <div id="bellebox" class="resume clearfix">
+  <div class="span-12 border">
     <% if @filier1 %><%= render 'compar/list2', :fil => @filier1 %><%end%>
   </div>
   <div class="span-12 last">
     <% if @filier2 %><%= render 'compar/list2', :fil => @filier2 %><%end%>
   </div>
+</div>
 
-    <div class="span-12">
+ <div id="bellebox" class="resume clearfix">
+  <div class="span-12 border">
     <% if @filier1 %><%= render 'compar/list21', :fil => @filier1 %><%end%>
   </div>
   <div class="span-12 last">
     <% if @filier2 %><%= render 'compar/list21', :fil => @filier2 %><%end%>
   </div>
+</div>
 
-  <div class="span-12">
+ <div id="bellebox" class="resume clearfix">
+  <div class="span-12 border">
     <% if @filier1 %><%= render 'compar/list3', :fil => @filier1 %><%end%>
   </div>
   <div class="span-12 last">
     <% if @filier2 %><%= render 'compar/list3', :fil => @filier2 %><%end%>
   </div>
+</div>
 
-  <div class="span-12">
+ <div id="bellebox" class="resume clearfix">
+  <div class="span-12 border">
     <% if @filier1 %><%= render 'compar/list4', :fil => @filier1 %><%end%>
   </div>
   <div class="span-12 last">
     <% if @filier2 %><%= render 'compar/list4', :fil => @filier2 %><%end%>
   </div>
+</div>
 
-  <div class="span-12">
+<div id="bellebox" class="resume clearfix">
+  <div class="span-12 border">
     <% if @filier1 %><%= render 'compar/list5', :fil => @filier1 %><%end%>
   </div>
   <div class="span-12 last">
     <% if @filier2 %><%= render 'compar/list5', :fil => @filier2 %><%end%>
   </div>
+</div>
+
+    <div class="clearfix">
+    <%= link_to "retour à la liste", filieres_path, :class => "button" %>
+    </div>
+
 </div>
 <br/>
 <br/>

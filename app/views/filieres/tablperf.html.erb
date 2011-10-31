@@ -6,13 +6,15 @@
     <%= link_to "retour à la liste", filieres_path, :class => "button" %>
     </div>
 
-  <fieldset>
-    <legend>Performances des filières <%= aide("")%> </legend>
+<div id="switcher-content">
+    <div class="search">
+    <div class="grd fort">Performances des filières <%= aide("")%> </div>
 
     Performances fournies par les constructeurs dans les guides ou manuels officiels.
 
 
-  </fieldset>
+</div>
+</div>
 </div>
 
   <div class="ptt"> pour voir la fiche - cliquer sur le n° agrément</div>
@@ -20,7 +22,7 @@
 <table>
   <thead>
     <tr>
-      <th><%= sort_link @q, :num_agrement, 'n° agrément'%> </th>
+      <th><%= sort_link @q, :num_agrement, 'n° agrément', :default_order => :desc %> </th>
       <th>dénomination commerciale</th>
       <th><%= sort_link @q, :type_filiere, 'type filière'%></th>
       <th><%= sort_link @q, :dbo5, 'DBO5' %></th>
@@ -35,9 +37,7 @@
     <tr>
       <td><%= link_to (fil.num_agrement),fil %></td>
       <td><%=fil.denomination_commerciale %>
-      <% if fil.saisie %>
-        <%= image_tag("inbox.png", :title => "Fiche incompléte par ailleurs") %>
-      <%end%></td>
+        <%= saisie(fil) %></td>
       <td><%=fil.type_filiere %></td>
       <td><% if fil.dbo5 %>
               <%=fil.dbo5 %> (<%= fil.PCdbo %> % )
@@ -51,3 +51,7 @@
   <%end %>
   </tbody>
 </table>
+
+    <div class="clearfix">
+    <%= link_to "retour à la liste", filieres_path, :class => "button" %>
+    </div>

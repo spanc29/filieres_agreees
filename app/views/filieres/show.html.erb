@@ -3,7 +3,7 @@
   <div class="clearfix">
   <%= link_to "retour à la liste", filieres_path, :class => "button" %>
     <% if can? :update, Filiere %><%= link_to "Modifier", edit_filiere_path(@filiere), :class=>"button" %> <%end%>
-    <% if can? :destroy, Filiere %><%= link_to "Detruire", @filiere, :confirm => 'Are you sure?', :method => :delete, :class => "button negative" %> <%end%>
+    <% if can? :destroy, Filiere %><%= link_to "Detruire", @filiere, :confirm => 'Are you sure?', :method => :delete, :class => "button" %> <%end%>
   </div>
 
 <!-- titre -->
@@ -12,17 +12,23 @@
           FICHE NON COMPLETE - SAISIE EN COURS
         </div>
       <%end%>
-<h1>  <%= @filiere.num_agrement %> / <%= @filiere.denomination_commerciale %></h1>
+
+<h1><%= @filiere.num_agrement %> / <%= @filiere.denomination_commerciale %></h1>
+
+    <div id="bellebox">
+    <div class="resume clearfix">
+
     <div class="span-8">
-      <p>Titulaire : <strong><%= @filiere.titulaire %></strong></p>
+      <p>Titulaire : <strong><%= link_to @filiere.titulaire,@filiere.site_web, :title=>"Allez sur le site", :class=>"external" %></strong></p>
       Adresse : <address><%= simple_format(@filiere.adresse) %></address>
-      <p> <%= link_to @filiere.site_web %> </p>
-      <p><strong><%= mail_to(@filiere.email) %></strong></p>
+      <p>  </p>
+      <p>service commercial :<br/>
+      <strong><%= mail_to @filiere.email,nil, :class=>"mail" %></strong></p>
     </div>
     <div class="span-8">
       <p>Organisme d'évaluation : <strong><%= @filiere.organisme_test %></strong></p>
       <p>JORF n° : <strong><%= @filiere.num_avis_jo %></strong> du <%= l(@filiere.date_JO) %></p>
-      <p>lien legifrance : <strong><%= link_to @filiere.texte_NOR_jo, @filiere.lien_legifrance %></strong></p>
+      <p>lien legifrance : <strong><%= link_to @filiere.texte_NOR_jo, @filiere.lien_legifrance, :class=>"external" %></strong></p>
       <p class="ptt quiet">fiche mise à jour le <%= l(@filiere.updated_at) %> (<%= distance_of_time_in_words(Time.now, @filiere.updated_at)%>)
       <% if can? :destroy, Filiere %>
         <% if @filiere.updater_id %>
@@ -31,6 +37,7 @@
        <%end%>
       </p>
     </div>
+
     <div class="span-8 last">
       <p class="ptt quiet">galerie d'images : </p>
       <% unless @filiere.photo.empty? %>
@@ -41,47 +48,49 @@
       <%= image_tag("noimage.png", :width => '250', :alt => "pas de photo") %>
       <%end%>
     </div>
+
+    </div></div>
 </div>
 </div>
 
 <!-- description / caracteristique techniques -->
 <div class="container">
-  <div class="span-24">
-  <h2>Description <%= aide("description")%></h2>
+<div id="bellebox" class="resume clearfix">
+
+  <div class="">
+  <h2 class="outthin titre">Description <%= aide("description")%></h2>
     <div class="info"> type : <strong><%= @filiere.type_filiere %> --> <%= @filiere.description_sommaire %></strong></div>
     Description :
     <div class="small"><code><%= simple_format(@filiere.description) %></code></div>
   </div>
 </div>
+</div>
 <!-- fin cadre 1 -->
 
 <!-- agréement / technic -->
 <div class="container">
-  <h2>Caractéristiques <%= aide("technique")%></h2>
-  <div class="span-24">
-    Eq Hab :
+  <div id="bellebox" class="resume clearfix">
+  <h2 class="outthin titre">Caractéristiques <%= aide("technique")%></h2>
       <% if @filiere.eq_hab %>
-      <div class="info center">
+      <div class="outthin center">
+        <div class="left quiet">eq.hab:</div>
         <% @filiere.eq_hab.each do |eq|%>
           <% unless eq.empty? %>
-          <%= image_tag (eq+".png") %>
-          <% else %>
-          -
+          <span class="chiffre"><%= eq %></span>
           <%end%>
         <%end %>
       </div>
       <%end%>
-    </div>
   <div class="span-12 border">
-  <h3>Agréments</h3>
-    <%= img_boolean(@filiere.intermittence,'intermittence') %> : <strong>Intermittence</strong><br/>
-    <%= img_boolean(@filiere.avec_nappe,'') %> <strong> : Pose en nappe</strong><br/>
-    <%= img_boolean(@filiere.test_bacterio,'bacterio') %> : <strong>Test Bacteriologie</strong><br/>
-    <hr/>Vidange : <strong><%= @filiere.ouvrage_vidange %></strong> à
-    <strong><%= @filiere.pourcent_vidange %> %</strong><br/>
-    <hr/>guide technique référence : <strong><%= @filiere.ref_guide_util %></strong>
+    <h3>Agréments</h3>
+      <%= img_boolean(@filiere.intermittence,'intermittence') %> : <strong>Intermittence</strong><br/>
+      <%= img_boolean(@filiere.avec_nappe,'') %> <strong> : Pose en nappe</strong><br/>
+      <%= img_boolean(@filiere.test_bacterio,'bacterio') %> : <strong>Test Bacteriologie</strong><br/>
+      <hr/>Vidange : <strong><%= @filiere.ouvrage_vidange %></strong> à
+      <strong><%= @filiere.pourcent_vidange %> %</strong><br/>
+      <hr/>guide technique référence : <strong><%= @filiere.ref_guide_util %></strong>
 
-
+    <!--  -->
     <h3>performances moyennes annoncées <%= aide("perfo")%> </h3>
     <table>
       <tbody>
@@ -104,6 +113,7 @@
     </table>
     Abattement bactériologique : <% if @filiere.logbacter %> <strong><%= @filiere.logbacter %></strong> LOG <% else %> Inconnu <%end%>
 
+    <!--  -->
     <% if @filiere.elec == true %>
     <h3><%= image_tag("lightning.png") %> Conso. électrique</h3>
       Puissance totale installée : <strong><%= @filiere.puiss_totale %> </strong>Watts <br/>
@@ -113,63 +123,71 @@
     <h3>Pas de consommation électrique</h3> de la filière elle-même.
     <%end%>
     <hr/>
-    Phase de démarrage ou redémarrage : <strong><%= @filiere.demarrage %> semaines</strong>
-
-
+    <h3> Autres </h3>
+    Phase de démarrage ou redémarrage : <strong><%= @filiere.demarrage %> semaines</strong><br/>
+    Niveau sonore indiqué : <strong> <%= @filiere.bruit %> dB</strong>
   </div>
 
 
   <div class="span-12 last">
-  <h3>techniques</h3>
+  <h3>ouvrages</h3>
     <% @filiere.techniques.each do |tec|%>
         <%= render 'tech', :tec => tec %>
     <%end %>
   </div>
+
 </div>
+</div>
+
 
 <!-- condition pose -->
 <div class="container">
-<h2>conditions de pose <%= aide("pose")%></h2>
+<div id="bellebox" >
+  <div class="resume clearfix">
+
+<h2 class="outthin titre">conditions de pose <%= aide("pose")%></h2>
 <div class="info">
 d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_guide_pose.empty? %> (<%= link_to 'charger', @filiere.lien_guide_pose, :target => "_blank" %>) <%end%></div>
 
-<div class="span-8 box">
+<div class="span-8 border">
   <% @filiere.poses.each do |pose|%>
   <h3>Généralités</h3>
   <div class="small loud"><%= simple_format(pose.generalite) %></div>
 </div>
 
-<div class="span-8 box">
+<div class="span-8 border">
   <h3>Implantation</h3>
     <div class="small loud"><%= simple_format(pose.implantation) %></div>
   </div>
 
-<div class="span-8 box last">
+<div class="span-7 last">
   <h3>Ventilations</h3>
     <div class="small loud"><%= simple_format(pose.ventil) %></div>
-  </div>
+</div>
 <hr/>
 
-<div class="span-8 box">
+<div class="span-8 border">
   <h3>terrain normal</h3>
     <div class="small loud"><%= simple_format(pose.ter_normal) %></div>
-  </div>
-
-<div class="span-8 box">
-  <h3>terrain difficile</h3>
-    <div class="small loud"><%= simple_format(pose.ter_diff) %></div>
-  </div>
-
-<div class="span-8 box last">
-  <h3>évacuation/dispersion <%= aide("dispersion")%></h3>
-    <div class="small loud"><%= simple_format(pose.evacuation) %></div>
-  </div>
-<%end %>
 </div>
 
+<div class="span-8 border">
+  <h3>terrain difficile</h3>
+    <div class="small loud"><%= simple_format(pose.ter_diff) %></div>
+</div>
+
+<div class="span-7 last">
+  <h3>évacuation/dispersion <%= aide("dispersion")%></h3>
+    <div class="small loud"><%= simple_format(pose.evacuation) %></div>
+</div>
+<%end %>
+</div></div>
+</div> <!-- fin bellebox -->
+
 <div class="container">
-  <div class="span-24">
-    <h2>Entretien <%= aide('entretien')%></h2>
+  <div id="bellebox" class="resume clearfix">
+
+    <h2 class="outthin titre">Entretien <%= aide('entretien')%></h2>
     <div class="ptt">ATTENTION : entretien indiqué par constructeur, consulter l'aide !</div>
     <table>
       <tbody>
@@ -200,7 +218,8 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
 
 <!-- couts -->
 <div class="container">
-  <h2>Coûts / tarifs <%= aide('tarifs')%></h2>
+<div id="bellebox" class="resume clearfix">
+  <h2 class="outthin titre">Coûts / tarifs <%= aide('tarifs')%></h2>
   <div class="ptt loud"> Coûts et détails indiquées par constructeur, consulter l'aide !</div>
   <div class="notice">
 <!--  coûts annuels moyens : <%= number_to_currency(@filiere.cout_annuel) %> TTC<br/> -->
@@ -233,4 +252,6 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
           FICHE NON COMPLETE - SAISIE EN COURS
         </div>
       <%end%>
+</div>
+<%= link_to "retour à la liste", filieres_path, :class => "button" %>
 </div>

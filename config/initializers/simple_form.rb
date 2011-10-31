@@ -38,10 +38,10 @@ SimpleForm.setup do |config|
   # config.wrapper_error_class = :field_with_errors
 
   # You can wrap a collection of radio/check boxes in a pre-defined tag, defaulting to none.
-  # config.collection_wrapper_tag = :div
+  # config.collection_wrapper_tag = :p
 
   # You can wrap each item in a collection of radio/check boxes with a tag, defaulting to none.
-  # config.item_wrapper_tag = nil
+  # config.item_wrapper_tag = :p
 
   # Series of attemps to detect a default label method for collection.
    config.collection_label_methods = [ :to_label, :name, :title, :to_s, :nom ]
@@ -70,7 +70,7 @@ SimpleForm.setup do |config|
   # config.country_priority = nil
 
   # Default size for text inputs.
-  config.default_input_size = 5
+  #config.default_input_size = 5
 
   # When false, do not use translations for labels, hints or placeholders.
   config.translate = true

@@ -1,9 +1,9 @@
 <div class="fields outline">
 <div class="right"><%= link_to_remove_fields "effacer", f %></div>
-<%= f.input :eouvrage %> quoi ?<br/>
-<%= f.input :eoperation %> <br/>
-<%= f.input :efrequence %> en mois<br/>
-<%= f.input :erealisation %> comment ?<br/>
+<%= f.input :eouvrage, :label => "quel élément ? " %><br/>
+<%= f.input :eoperation, :label => "opérations" %> <br/>
+<%= f.input :efrequence, :label => "fréquence (en mois)" %><br/>
+<%= f.input :erealisation, :label => "Qui ou comment" %><br/>
 entre <%= f.input :ecout_min, :label => false  %> et <%= f.input :ecout_max, :label => false %> € TTC<br/>
 <%= f.input :eobservat %>
 </div>

@@ -1,38 +1,37 @@
 <% @filieres.each do |filiere|%>
-  <div class="container box outline">
-
-  <div class="span-24">
-    <h2>
+<div id="bellebox">
+  <div class="resume clearfix">
+    <h2 class="outthin titre">
       <%= link_to (filiere.num_agrement)+" / "+( filiere.denomination_commerciale),filiere %>
     </h2>
-  </div>
-  <div class="span-24">
 
-      <div class="outthin center">
+      <div class="outthin">
         <% if filiere.eq_hab %>
-        Eq.Hab. :<% filiere.eq_hab.each do |eq|%>
-          <% if eq.empty? %>
-          -
-          <% else %>
-          <%= image_tag (eq+".png") %>
-          <%end%>
-        <%end %>
+          <% filiere.eq_hab.each do |eq|%>
+            <% if eq.empty? %>
+            <% else %>
+            <span class="chiffre"> <%= eq %> </span>
+            <%end%>
+          <%end %>
         <%end%>
-        </div>
-  </div>
-  <div class="span-6 border">
-    <%= filiere.titulaire %><br/>
+        eq.hab
+      </div>
+
+
+  <div class="span-6">
+    <%= link_to(filiere.titulaire, filiere.site_web, :target => "_blank", :class=>"external") %><br/>
    <address><%= simple_format(filiere.adresse) %></address>
     <div>
-    <%= link_to(filiere.site_web, filiere.site_web, :target => "_blank") %><br/>
-    <%= mail_to(filiere.email) %></div>
+    <%= mail_to filiere.email,nil, :class=>"mail"%>
+    </div>
   </div>
-  <div class="span-6 border">
+
+  <div class="span-6">
     <strong><%= filiere.type_filiere %></strong><br/>
     <div class="small"><%= filiere.description_sommaire %></div>
-
   </div>
-  <div class="span-6 border">
+
+  <div class="span-5">
       <div class="ptt">
       <%= img_boolean(filiere.intermittence,'intermittence') %> intermittence <br/>
       <%= img_boolean(filiere.avec_nappe,'pose en nappe') %> pose en nappe<br/>
@@ -42,10 +41,12 @@
       <% if filiere.sortie_basse == true %>
         <%=image_tag("arrow-270.png") %> sortie basse <%end%><br/>
       Vidange : <%= filiere.ouvrage_vidange %> à <%= filiere.pourcent_vidange %> % <br/>
-      Agréée le <%= l(filiere.date_JO) %> (JORF n°<%= filiere.num_avis_jo %>) par <%= filiere.organisme_test %></div>
+      Agréée le <%= l(filiere.date_JO) %> (JORF n°<%= filiere.num_avis_jo %>) par <%= filiere.organisme_test %>
+      </div>
   </div>
 
   <div class="span-6 last">
+      <div class="center">
       <% if filiere.photos.any? %>
       <%= image_tag Photo.find(:first, :conditions => [ "filiere_id = ?", filiere.id]).photo_name, :size => "100x100", :alt => "photo" %>
       <% else %>
@@ -62,9 +63,11 @@
       <% if filiere.saisie %>
         <div class="error">
           FICHE NON COMPLETE - SAISIE EN COURS
-      </div>
+        </div>
       <%end%>
       </div>
+      </div>
   </div>
   </div>
+</div>
 <%end %>

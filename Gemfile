@@ -2,7 +2,10 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.1'
 
+<<<<<<< HEAD
 gem 'pg'
+=======
+>>>>>>> newlook
 gem 'sqlite3'
 
 gem 'cancan'
