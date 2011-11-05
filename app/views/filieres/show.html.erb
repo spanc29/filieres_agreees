@@ -12,6 +12,11 @@
           FICHE NON COMPLETE - SAISIE EN COURS
         </div>
       <%end%>
+      <% if @filiere.verif %>
+        <div class="notice">
+          FICHE A VERIFIER - MERCI DE VOTRE AIDE
+        </div>
+      <%end%>
 
 <h1><%= @filiere.num_agrement %> / <%= @filiere.denomination_commerciale %></h1>
 
@@ -66,7 +71,16 @@
 </div>
 </div>
 <!-- fin cadre 1 -->
-
+      <% if @filiere.saisie %>
+        <div class="error">
+          FICHE NON COMPLETE - SAISIE EN COURS
+        </div>
+      <%end%>
+      <% if @filiere.verif %>
+        <div class="notice">
+          FICHE A VERIFIER - MERCI DE VOTRE AIDE
+        </div>
+      <%end%>
 <!-- agréement / technic -->
 <div class="container">
   <div id="bellebox" class="resume clearfix">
@@ -139,7 +153,16 @@
 </div>
 </div>
 
-
+      <% if @filiere.saisie %>
+        <div class="error">
+          FICHE NON COMPLETE - SAISIE EN COURS
+        </div>
+      <%end%>
+      <% if @filiere.verif %>
+        <div class="notice">
+          FICHE A VERIFIER - MERCI DE VOTRE AIDE
+        </div>
+      <%end%>
 <!-- condition pose -->
 <div class="container">
 <div id="bellebox" >
@@ -220,7 +243,16 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
     </table>
   </div>
 </div>
-
+      <% if @filiere.saisie %>
+        <div class="error">
+          FICHE NON COMPLETE - SAISIE EN COURS
+        </div>
+      <%end%>
+      <% if @filiere.verif %>
+        <div class="notice">
+          FICHE A VERIFIER - MERCI DE VOTRE AIDE
+        </div>
+      <%end%>
 <!-- couts -->
 <div class="container">
 <div id="bellebox" class="resume clearfix">
@@ -252,11 +284,6 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
         <%end %>
       </tbody>
     </table>
-          <% if @filiere.saisie %>
-        <div class="error">
-          FICHE NON COMPLETE - SAISIE EN COURS
-        </div>
-      <%end%>
 </div>
 <%= link_to "retour à la liste", filieres_path, :class => "button" %>
 </div>

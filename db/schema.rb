@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111031220853) do
+ActiveRecord::Schema.define(:version => 20111105230515) do
 
   create_table "couts", :force => true do |t|
     t.string   "poste"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(:version => 20111031220853) do
     t.float    "mes"
     t.float    "dco"
     t.integer  "bruit"
+    t.boolean  "verif"
   end
 
   create_table "photos", :force => true do |t|
