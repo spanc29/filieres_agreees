@@ -40,6 +40,10 @@
         <%=image_tag("lightning.png") %> Conso. Electricité <%end%><br/>
       <% if filiere.sortie_basse == true %>
         <%=image_tag("arrow-270.png") %> sortie basse <%end%><br/>
+      <% filiere.poses.each do |pose|%>
+        <% if pose.sous_voirie == true %>
+        <%=image_tag("car.png") %> sous charge <%end%><br/>
+      <%end %>
       Vidange : <%= filiere.ouvrage_vidange %> à <%= filiere.pourcent_vidange %> % <br/>
       Agréée le <%= l(filiere.date_JO) %> (JORF n°<%= filiere.num_avis_jo %>) par <%= filiere.organisme_test %>
       </div>

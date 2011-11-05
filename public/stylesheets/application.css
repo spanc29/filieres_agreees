@@ -1,10 +1,8 @@
 /* Fix for stripeframe screwing up layout (has a new id every time it gets added, so cant use that to select it)
 */
 iframe { position: absolute; }
-
-
 /* Global */
-html { background: #d9dfe4 url(/images/background.png); font-family: "HelveticaNeue", Helvetica, Arial, sans-serif; }
+html { background: #d9dfe4 url(/images/background.png); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 body { padding-bottom: 40px; }
 
 a { color: #0068de; text-decoration: none; }

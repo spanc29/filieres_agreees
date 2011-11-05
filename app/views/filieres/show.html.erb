@@ -61,7 +61,7 @@
   <h2 class="outthin titre">Description <%= aide("description")%></h2>
     <div class="info"> type : <strong><%= @filiere.type_filiere %> --> <%= @filiere.description_sommaire %></strong></div>
     Description :
-    <div class="small"><code><%= simple_format(@filiere.description) %></code></div>
+    <blockquote><%= simple_format(@filiere.description) %></blockquote>
   </div>
 </div>
 </div>
@@ -152,33 +152,38 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
 <div class="span-8 border">
   <% @filiere.poses.each do |pose|%>
   <h3>Généralités</h3>
-  <div class="small loud"><%= simple_format(pose.generalite) %></div>
+  <div class="small"><%= simple_format(pose.generalite) %></div>
 </div>
 
 <div class="span-8 border">
   <h3>Implantation</h3>
-    <div class="small loud"><%= simple_format(pose.implantation) %></div>
+  <div class="outthin">
+ <% if pose.sous_voirie %>
+        <%=image_tag("car.png", :title =>"pose sous voirie ou charge possible") %> cf. conditions terrain<br/>
+  <%end%> </div>
+  <div class="small"><%= simple_format(pose.implantation) %></div>
   </div>
 
 <div class="span-7 last">
   <h3>Ventilations</h3>
-    <div class="small loud"><%= simple_format(pose.ventil) %></div>
+    <div class="small"><%= simple_format(pose.ventil) %></div>
 </div>
 <hr/>
 
 <div class="span-8 border">
   <h3>terrain normal</h3>
-    <div class="small loud"><%= simple_format(pose.ter_normal) %></div>
+    <div class="small"><%= simple_format(pose.ter_normal) %></div>
 </div>
 
 <div class="span-8 border">
   <h3>terrain difficile</h3>
-    <div class="small loud"><%= simple_format(pose.ter_diff) %></div>
+    <div class="small"><%= simple_format(pose.ter_diff) %></div>
+
 </div>
 
 <div class="span-7 last">
   <h3>évacuation/dispersion <%= aide("dispersion")%></h3>
-    <div class="small loud"><%= simple_format(pose.evacuation) %></div>
+    <div class="small"><%= simple_format(pose.evacuation) %></div>
 </div>
 <%end %>
 </div></div>
