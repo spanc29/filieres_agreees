@@ -182,7 +182,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
   <h3>Implantation</h3>
   <div class="outthin">
  <% if pose.sous_voirie %>
-        <%=image_tag("car.png", :title =>"pose sous voirie ou charge possible") %> cf. conditions terrain<br/>
+        <%=image_tag("car.png", :title =>"pose sous voirie ou charge possible") %> pose sous voirie cf. conditions terrain<br/>
   <%end%> </div>
   <div class="small"><%= simple_format(pose.implantation) %></div>
   </div>
