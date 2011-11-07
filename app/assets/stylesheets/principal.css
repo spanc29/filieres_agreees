@@ -1,8 +1,6 @@
-/* Fix for stripeframe screwing up layout (has a new id every time it gets added, so cant use that to select it)
-*/
 iframe { position: absolute; }
 /* Global */
-html { background: #d9dfe4 url(/images/background.png); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+html { background: #d9dfe4 url("background.png"); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
 body { padding-bottom: 40px; }
 
 a { color: #0068de; text-decoration: none; }
@@ -12,11 +10,11 @@ a:hover { color: #333; text-decoration: underline; }
         a.red:hover { color: #333; }
 
 a.external {
-    background: url(/images/external.png) no-repeat scroll right center transparent;
+    background: url('external.png') no-repeat scroll right center transparent;
     padding-right: 13px;
 }
 a.mail {
-    background: url(/images/email.png) no-repeat scroll right center transparent;
+    background: url('email.png') no-repeat scroll right center transparent;
     padding-right: 13px;
 }
 
@@ -29,7 +27,7 @@ div#header { height: 108px; position: relative; }
 
     div#header h1 { text-indent: -999em; float: left; margin-top: 39px; width: 218px; height: 31px;
                     -wexbkit-backface-visibility: hidden; }
-        div#header h1 a { background: url(/images/logo.png) no-repeat; display: block; height: 31px;
+        div#header h1 a { background: url('logo.png') no-repeat; display: block; height: 31px;
                           -webkit-transzition: opacity 300ms ease-in-out;
                           }
             div#header h1 a:hover { opacity: 0.75; }
