@@ -2,11 +2,10 @@
 <html>
   <head>
     <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
-    <%= stylesheet_link_tag 'screen.css','application.css', :media => 'screen, projection' %>
     <%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Arvo', :media => 'screen, projection' %>
-    <%= stylesheet_link_tag '/javascripts/zoombox/zoombox.css', :media => 'screen, projection' %>
-    <%= stylesheet_link_tag 'print.css', :media => 'print' %>
-    <%= javascript_include_tag "http://code.jquery.com/jquery-1.6.1.min.js","application","rails", "zoombox/zoombox.js" %>
+    <%= stylesheet_link_tag 'application'%>
+    <%= javascript_include_tag "application"%>
+    <%= javascript_include_tag "zoombox/zoombox.js"%>
     <%= csrf_meta_tag %>
     <%= yield(:head) %>
 

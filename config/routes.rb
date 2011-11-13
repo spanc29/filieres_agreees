@@ -1,13 +1,8 @@
 AGREEES::Application.routes.draw do
 
-  resources :photos
-
   match 'user/edit' => 'users#edit', :as => :edit_current_user
-
   match 'signup' => 'users#new', :as => :signup
-
   match 'logout' => 'sessions#destroy', :as => :logout
-
   match 'login' => 'sessions#new', :as => :login
 
   match 'comparo' => 'filieres#comparo', :as => :comparo
@@ -16,9 +11,9 @@ AGREEES::Application.routes.draw do
 
   resources :sessions
 
-  resources :users
-
   resources :filieres
+  resources :photos
+  resources :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
