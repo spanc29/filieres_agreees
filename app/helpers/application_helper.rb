@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
 def aide(ancre=nil)
-  lien="/aide.html"
+  lien="/pages/aide"
   if ancre
     lien = lien + "#" + ancre
   end
