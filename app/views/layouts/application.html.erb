@@ -49,9 +49,9 @@
 </div>
 
 <div class="conthead noprint">
-  <%= link_to "EXPLICATIONS", '/aide.html', :class => "header-button", :title => "explications et aide" %>
-  <%= link_to "AVERTISSEMENT", "/disclaimer.html", :class => "header-button" %>
-  <%= link_to "SITE SANS PUB !", '/don.html', :title => "FAIRE UN DON", :class => "header-button" %>
+  <%= link_to "EXPLICATIONS", '/pages/aide', :class => "header-button", :title => "explications et aide" %>
+  <%= link_to "AVERTISSEMENT", "/pages/disclaimer", :class => "header-button" %>
+  <%= link_to "SITE SANS PUB !", '/pages/don', :title => "FAIRE UN DON", :class => "header-button" %>
   <% if can? :create, Filiere %>
             <%= link_to "Nouvelle Filiere", new_filiere_path, :class => "header-button" %>
           <%end%>
