@@ -36,6 +36,6 @@ def saisie(den="filiere")
 end
 
 def erreur(quelle="")
-  mail_to("spanc29@spanc29.net", image_tag("exclamation.png",:title => "signaler une erreur"), :subject => "erreur dans fiche "+@filiere.denomination_commerciale, :body => "soyez précis dans votre description, merci")
+  mail_to("spanc29@spanc29.net", image_tag("exclamation.png",:title => "signaler une erreur"), :subject => "erreur dans fiche "+@filiere.denomination_commerciale, :body => "soyez precis dans votre description, merci")
 end
 end
