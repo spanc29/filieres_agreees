@@ -4,10 +4,10 @@ html { background: #d9dfe4 url("background.png"); font-family: "Helvetica Neue",
 body { padding-bottom: 40px; }
 
 a { color: #0068de; text-decoration: none; }
-a:hover { color: #333; text-decoration: underline; }
+a:hover { color: #333;  }
 
-    a.red { color: red; }
-        a.red:hover { color: #333; }
+    a.white { color: white; }
+        a.white:hover { color: white;text-decoration: underline; }
 
 a.external {
     background: url('external.png') no-repeat scroll right center transparent;

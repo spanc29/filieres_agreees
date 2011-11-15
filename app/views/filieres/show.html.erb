@@ -63,7 +63,7 @@
 <div id="bellebox" class="resume clearfix">
 
   <div class="">
-  <h2 class="outthin titre">Description <%= aide("description")%></h2>
+  <h2 class="outthin titre">Description <%= aide("description")%> <span class="right"> <%= erreur() %></span></h2>
     <div class="info"> type : <strong><%= @filiere.type_filiere %> --> <%= @filiere.description_sommaire %></strong></div>
     Description :
     <blockquote><%= simple_format(@filiere.description) %></blockquote>
@@ -84,7 +84,7 @@
 <!-- agréement / technic -->
 <div class="container">
   <div id="bellebox" class="resume clearfix">
-  <h2 class="outthin titre">Caractéristiques <%= aide("technique")%></h2>
+  <h2 class="outthin titre">Caractéristiques <%= aide("technique")%><span class="right"> <%= erreur() %></span></h2>
       <% if @filiere.eq_hab %>
       <div class="outthin center">
         <div class="left quiet">eq.hab:</div>
@@ -168,7 +168,7 @@
 <div id="bellebox" >
   <div class="resume clearfix">
 
-<h2 class="outthin titre">conditions de pose <%= aide("pose")%></h2>
+<h2 class="outthin titre">conditions de pose <%= aide("pose")%><span class="right"> <%= erreur() %></span></h2>
 <div class="info">
 d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_guide_pose.empty? %> (<%= link_to 'charger', @filiere.lien_guide_pose, :target => "_blank" %>) <%end%></div>
 
@@ -215,7 +215,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
 <div class="container">
   <div id="bellebox" class="resume clearfix">
 
-    <h2 class="outthin titre">Entretien <%= aide('entretien')%></h2>
+    <h2 class="outthin titre">Entretien <%= aide('entretien')%><span class="right"> <%= erreur() %></span></h2>
     <div class="ptt">ATTENTION : entretien indiqué par constructeur, consulter l'aide !</div>
     <table>
       <tbody>
@@ -256,7 +256,7 @@ d'après : <strong><%= @filiere.guide_pose %></strong> <% unless @filiere.lien_g
 <!-- couts -->
 <div class="container">
 <div id="bellebox" class="resume clearfix">
-  <h2 class="outthin titre">Coûts / tarifs <%= aide('tarifs')%></h2>
+  <h2 class="outthin titre">Coûts / tarifs <%= aide('tarifs')%><span class="right"> <%= erreur() %></span></h2>
   <div class="ptt loud"> Coûts et détails indiquées par constructeur, consulter l'aide !</div>
   <div class="notice">
 <!--  coûts annuels moyens : <%= number_to_currency(@filiere.cout_annuel) %> TTC<br/> -->
