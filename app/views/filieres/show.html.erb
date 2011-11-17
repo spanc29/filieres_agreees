@@ -45,7 +45,7 @@
 
     <div class="span-8 last">
       <p class="ptt quiet">galerie d'images : </p>
-      <% if @filiere.photo.any? %>
+      <% if @filiere.photo.many? %>
       <% @filiere.photos.each do |photo|%>
         <%= link_to image_tag(photo.photo_name, :width => '75', :title => photo.legende), photo.photo_name, :class=>"zoombox zgallery1" %>
         <%end%>
