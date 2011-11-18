@@ -10,9 +10,9 @@ group :assets do
   gem 'uglifier'
 end
 
-gem 'jquery-rails'
-
 gem 'pg'
+
+gem 'jquery-rails'
 
 gem 'execjs'
 gem 'therubyracer'
