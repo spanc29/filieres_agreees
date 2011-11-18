@@ -47,7 +47,7 @@
       <p class="ptt quiet">galerie d'images : </p>
       <% if @filiere.photos.present? %>
       <% @filiere.photos.each do |photo|%>
-        <%= link_to image_tag(photo.photo_name,:width => '75',:title => photo.legende),photo.photo_name,:class=>"zoombox zgallery1" %>
+        <a href="<%= photo.photo_name %>" class="zoombox zgallery1"><img src="<%= photo.photo_name %>" width="75" alt="<%= photo.legende %>" /> </a>
         <%end%>
       <% else %>
       <%= image_tag("noimage.png", :width => '100', :alt => "pas de photo") %>
