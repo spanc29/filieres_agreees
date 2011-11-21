@@ -32,7 +32,7 @@
 </div>
 
 <div>
-      filières affichées : <%= @filieres.count %> / <%= Filiere.count %>, tri par <%= sort_link @q, :num_agrement, 'n° agrément', :default_order => :desc %> - <%= sort_link @q, :date_JO, 'Date agrément'%> - <%= sort_link @q, :type_filiere, 'type_filiere'%>
+      filières affichées : <%= @filieres.count %> / <%= Filiere.count %>, tri par <%= sort_link @q, :num_agrement, 'n° agrément', :default_order => :desc %> - <%= sort_link @q, :date_JO, 'Date agrément'%> - <%= sort_link @q, :type_filiere, 'type filiere'%>
 </div>
 
 <%= render 'resume' %>

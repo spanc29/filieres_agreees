@@ -65,6 +65,8 @@
       par <%= User.find_by_id(filiere.updater_id).username %>
         <%end%>
       <%end%><br/>
+      nb visites : <%= filiere.impressionist_count%>
+
       <% if filiere.saisie %>
         <div class="error">
           FICHE NON COMPLETE - SAISIE EN COURS

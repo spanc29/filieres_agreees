@@ -1,5 +1,6 @@
 class FilieresController < ApplicationController
 
+
   def index
   @q = Filiere.search(params[:q])
   @filieres = @q.result(:distinct => false)
@@ -23,6 +24,7 @@ class FilieresController < ApplicationController
 
   def show
     @filiere = Filiere.find(params[:id])
+    impressionist(@filiere)
   end
 
   def new

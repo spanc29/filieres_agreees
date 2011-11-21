@@ -25,6 +25,7 @@ gem 'ransack'
 gem 'squeel'
 gem 'userstamp'
 gem 'deep_cloneable'
+gem 'impressionist'
 
 
 gem "mocha", :group => :test
