@@ -39,7 +39,7 @@
         <% if @filiere.updater_id %>
        par <%= User.find_by_id(@filiere.updater_id).username %>
         <%end%>
-       <%end%>
+       <%end%><br/>
        pages vues : <%= @filiere.impressionist_count%> fois depuis le 22/11/11
       </p>
     </div>

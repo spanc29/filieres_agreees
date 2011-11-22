@@ -3,7 +3,7 @@ class FilieresController < ApplicationController
 
   def index
   @q = Filiere.search(params[:q])
-  @filieres = @q.result(:distinct => false)
+  @filieres = @q.result(:distinct => false).order("num_agrement ASC")
   end
 
   def comparo
@@ -14,12 +14,12 @@ class FilieresController < ApplicationController
 
   def tableau
     @q = Filiere.search(params[:q])
-    @filieres = @q.result(:distinct => false)
+    @filieres = @q.result(:distinct => false).order("num_agrement ASC")
   end
 
   def tablperf
     @q = Filiere.search(params[:q])
-    @filieres = @q.result(:distinct => false)
+    @filieres = @q.result(:distinct => false).order("num_agrement ASC")
   end
 
   def show

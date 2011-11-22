@@ -12,8 +12,8 @@
     <div class="grd fort">Comparaison technique <%= aide("comparo")%></div>
   <%= form_tag(:comparo, :method => "get") do %>
     <%= label_tag(:id1, "Choisir : ") %>
-    <%= select_tag :id1, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement" ) %>
-    <%= select_tag :id2, options_from_collection_for_select(@filieres, "num_agrement", "num_agrement") %>
+    <%= select_tag :id1, options_from_collection_for_select(@filieres, "num_agrement", "denomination_commerciale") %>
+    <%= select_tag :id2, options_from_collection_for_select(@filieres, "num_agrement", "denomination_commerciale") %>
     <%= submit_tag("comparer") %>
   <% end %>
   </div>
